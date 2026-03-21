@@ -16,8 +16,7 @@ Topics, articles and videos to study
 
 ## React / Next.js
 
-- [ ] https://www.youtube.com/watch?v=hhudoSMM0yU
-- [ ] https://blog.openreplay.com/api-gateway-patterns-and-practices/?ref=dailydev
+- [ ] 
 
 ## Angular
 
@@ -39,3 +38,8 @@ Topics, articles and videos to study
   - Axe / Wave
   - Webaim.org
   - Whocanuse
+
+## Reading & Watching List
+
+- [ ] https://blog.openreplay.com/api-gateway-patterns-and-practices/?ref=dailydev
+- [ ] 
