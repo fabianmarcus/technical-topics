@@ -1,4 +1,4 @@
-# Technical Topics 
+# Personal Technical Topics 
 Topics, articles and videos to study
 
 ## KI / AI
@@ -38,6 +38,7 @@ Topics, articles and videos to study
   - Axe / Wave
   - Webaim.org
   - Whocanuse
+- How do Passphrases work?
 
 ## Reading & Watching List
 
