@@ -6,21 +6,27 @@ Topics, articles and videos to study
 ### Study
 
 - [ ] MCP
-- [ ] Overview
+- [ ] LLM Instruction Files
+- [ ] Agent Coding
+- [ ] KI - Product Overview
 
 ### Try
 
-- [ ] Claude Code (Vibe Coding)
+- [ ] Codex or Claude Code or Gemini CLI (Vibe Coding)
 - [ ] Onyx (RAG)
 - [ ] Self Hosted LLM (Ollama)
 
 ## React / Next.js
 
-- [ ] 
+### Study
+
+### Try
 
 ## Angular
 
-- [ ] 
+### Study
+
+### Try
 
 ## Typescript
 
@@ -28,6 +34,17 @@ Topics, articles and videos to study
 - [ ] https://netninja.dev/p/typescript-masterclass
 - [ ] https://www.youtube.com/watch?v=6M9aZzm-kEc&list=TLPQMjcxMTIwMjPtDINszOh9aA&index=4
 - [ ] https://devblogs.microsoft.com/typescript/announcing-typescript-5-4-beta/#preserved-narrowing-in-closures-following-last-assignments
+
+## Firebase
+
+### Study
+
+### Study
+
+### Try
+
+- [ ] Data Connect
+- [ ] Firebase MCP
 
 ## Short Explanations
 
