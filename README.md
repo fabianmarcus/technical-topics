@@ -20,6 +20,7 @@ Topics, articles and videos to study
 
 ### Study
 
+- [ ] [Rspack](https://rspack.rs/)
 - [ ] [Oxidation Compiler](https://oxc.rs/)
 
 ### Try
