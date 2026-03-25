@@ -5,9 +5,9 @@ Topics, articles and videos to study
 
 ### Study
 
-- [ ] MCP
+- [ ] [MCP](https://modelcontextprotocol.io/docs/getting-started/intro)
 - [ ] LLM Instruction Files
-- [ ] Agent Coding
+- [ ] Agent Coding (Copilot CLI, Claude Code)
 - [ ] KI - Product Overview
 
 ### Try
