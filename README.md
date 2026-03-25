@@ -20,7 +20,12 @@ Topics, articles and videos to study
 
 ### Study
 
+- [ ] [Oxidation Compiler](https://oxc.rs/)
+
 ### Try
+
+- [ ] [SWR](https://swr.vercel.app/docs/mutation)
+- [ ] [Playwright Agent Testing](https://playwright.dev/docs/test-agents)
 
 ## Angular
 
