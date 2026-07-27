@@ -2,9 +2,132 @@
 
 MCP steht für Model Context Protocol.
 
-MCP ist das HTTP für KI-Modelle (LLMs). Es standardisiert die Kommunikation zwischen LLMs und Agenten, die diese Modelle nutzen. Es definiert ein Protokoll, das es Agenten ermöglicht, mit verschiedenen LLMs zu interagieren, ohne sich um die spezifischen Implementierungen der einzelnen Modelle kümmern zu müssen.
+MCP ist das HTTP für KI-Modelle (LLMs). Es standardisiert die Kommunikation zwischen MCP Clients und Servern. Es definiert ein Protokoll, das es Agenten ermöglicht, auf gleiche Weise mit verschiedenen Tool-Anbietern zu interagieren, ohne sich um die spezifischen Implementierungen der einzelnen MCP-Server kümmern zu müssen.
 
-Das Protokoll definiert standardisierte Endpunkte und Datenformate für die Kommunikation zwischen Agenten und LLMs. Ähnlich zu HTTP, das standardisierte Methoden (GET, POST, PUT, DELETE) und Statuscodes definiert, definiert MCP standardisierte Anfragen und Antworten für die Interaktion mit LLMs.
+Das Protokoll definiert standardisiertes JSON(-RPC) für die Kommunikation zwischen Client und Server. Ähnlich zu HTTP, das standardisierte Methoden (GET, POST, PUT, DELETE) und Statuscodes definiert.
+
+Pseudo-Beispiel für eine Anfrage eines Agenten mit MCP Client an einen beliebigen MCP-Server, um eine Liste der verfügbaren Tools zu erhalten.
+
+Zunächst erfolgt der Handshake, also die gegenseitige Abstimmung was möglich ist:
+
+Anfrage des Clients:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "initialize",
+  "params": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "roots": { "listChanged": true },
+      "sampling": {}
+    },
+    "clientInfo": {
+      "name": "my-agent",
+      "version": "1.0.0"
+    }
+  }
+}
+```
+
+Antwort des Servers:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "tools": { "listChanged": true },
+      "resources": { "subscribe": true, "listChanged": true },
+      "prompts": { "listChanged": true }
+    },
+    "serverInfo": {
+      "name": "weather-mcp-server",
+      "version": "0.3.2"
+    }
+  }
+}
+```
+
+Client und Server haben sich auf die Protokollversion geeinigt und die Fähigkeiten des Servers ausgetauscht. Der Client weiß nun, dass er Tools abrufen kann, dass er Ressourcen abonnieren kann und dass er Prompts abrufen kann.
+
+Er sendet nun eine Benachrichtigung, dass die Initialisierung abgeschlossen ist:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "notifications/initialized",
+  "params": {}
+}
+```
+
+Der Client kann nun die Tools abrufen, die der Server anbietet. Dazu sendet er eine Anfrage an den Server, um die Liste der verfügbaren Tools zu erhalten.
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "tools/list",
+  "params": {}
+}
+```
+
+Der MCP-Server antwortet dem Client bzw. Agenten dann beispielsweise wie folgt:
+
+(Die Tools unterscheiden sich von Server zu Server, die Struktur ist aber grundsätzlich gleich.)
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "tools": [
+      {
+        "name": "weather.get_current",
+        "description": "Liefert das aktuelle Wetter fuer eine Stadt",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "Name der Stadt, z.B. Berlin"
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["celsius", "fahrenheit"],
+              "default": "celsius"
+            }
+          },
+          "required": ["city"],
+          "additionalProperties": false
+        }
+      }
+    ]
+  }
+}
+```
+
+Der Agent bereitet diese Informationen für das LLM auf und arbeitet sie in den Kontext ein. So weiß das LLM, welche Tools verfügbar sind und wie sie aufgerufen werden können.
+
+Fragt nun ein Nutzer nach dem Wetter, weiß das LLM, dass es hierauf aktuell antworten kann. Es bittet den Agenten, das Tool aufzurufen, indem er eine Anfrage an den MCP-Server sendet. Der MCP-Server ruft das Tool auf, erhält die Antwort und gibt sie an den Agenten zurück. Der Agent übergibt sie anschließend weiter an das LLM.
+
+```json
+{
+  "id": 2,
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "weather.get_current",
+    "arguments": {
+      "city": "Berlin",
+      "unit": "celsius"
+    }
+  }
+}
+```
 
 ## Tool Calling
 
@@ -69,7 +192,6 @@ function extractFunctionCalls(response: any): FunctionCall[] {
   if (Array.isArray(response.functionCalls) && response.functionCalls.length > 0) {
     return response.functionCalls;
   }
-
   const parts = response?.candidates?.[0]?.content?.parts ?? [];
   const calls = parts
     .filter((p: any) => p.functionCall)
