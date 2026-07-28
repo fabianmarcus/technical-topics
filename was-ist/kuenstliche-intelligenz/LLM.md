@@ -82,7 +82,7 @@ ID 1234 = Vektor [0.1, 0.2, 0.3, 0.4]
 
 In der realen Praxis sind die Vektoren viel größer und haben mehrere hundert oder tausend Dimensionen. Jede Zahl ist eine Position in diesem multidimensionalen Raum. Aus der Schule kennt man den zweidimensionalen Raum (x,y) und den dreidimensionalen Raum (x,y,z). Ein Vektor hat in unserem KI-Kontext aber eher hunderte oder tausende Dimensionen, die man sich nur schwer vorstellen kann. *(mehr weiß ich hierüber auch nicht)*
 
-**Der Clou an der ganzen Sache ist,** dass diese Vektoren miteinander verglichen werden können. Je ähnlicher zwei Vektoren sind, je näher sie im Vektorraum beieinanderliegen, desto ähnlicher sind auch die Informationen, die sie repräsentieren. So kann das LLM später erkennen, dass `Tür` und `Fenster` ähnliche Konzepte sind, während `Tür` und `Hund` sehr unterschiedliche Konzepte sind.
+**Der Clou an der ganzen Sache ist,** dass diese Vektoren mathematisch miteinander verglichen werden können. Je ähnlicher zwei Vektoren sind, je näher sie im Vektorraum beieinanderliegen, desto ähnlicher sind auch die Informationen, die sie repräsentieren. So kann das LLM später erkennen, dass `Tür` und `Fenster` ähnliche Konzepte sind, während `Tür` und `Hund` sehr unterschiedliche Konzepte sind.
 
 **Dadurch ist es möglich, semantische Ähnlichkeit und nicht nur Übereinstimmung vergleichen zu können. Das ist die Errungenschaft dieses ganzen KI-Themas!**
 
@@ -122,6 +122,16 @@ Der generelle Ablauf ist also ungefähr so:
 - Dieser Prozess wird wiederholt, bis das LLM ein Endtoken vorhersagt oder die maximale Länge der Antwort erreicht ist
 
 Dieser ganze Prozess der Vorhersage (Inferenz) ist ein Teilbereich des Buzzwords NLP, Natural Language Processing, das oft im Zusammenhang mit Künstlicher Intelligenz und Large Language Models fällt. Damit beschäftige ich mich noch gesondert.
+
+#### Sampling (Gewichtete Zufallsauswahl)
+
+Da die Vorhersagen der Tokens mathematisch berechnet werden und Mathematik eindeutig ist, stellt sich die Frage, warum ein LLM für dasselbe Prompt unterschiedliche Antworten generiert. Das liegt am sogenannten [Sampling](./Vokabeln.md#sampling).
+
+Sampling bedeutet im KI-Kontext, mit einer bestimmten Methode einen Ausschnitt von Tokens aus einer größeren Menge von Tokens zu bestimmen. Dadurch wird eingeschränkt, welche Tokens für die Vorhersage des nächsten Tokens überhaupt zur Auswahl stehen. Denn je nach Einstellung der [Sampling-Parameter](./Vokabeln.md#sampling) wird das Modell den Ausschnitt eher strenger (präzise, vorhersagbar, deterministisch) oder eher lockerer (kreativ, unvorhersehbar, nicht-deterministisch) zuschneiden. Häufig angewandte Sampling-Methoden sind [Top-K, Top-P und Temperature](./Vokabeln.md#sampling).
+
+Aus diesem Ausschnitt wird dann das nächste Token per gewichtetem Zufall (Weighted Random Sampling) ausgewählt. Gewichtet bedeutet, dass die Wahrscheinlichkeit, dass ein Token ausgewählt wird, von seiner berechneten Wahrscheinlichkeit abhängt. Ein Token mit einer Wahrscheinlichkeit von 60% wird also häufiger ausgewählt als ein Token mit einer Wahrscheinlichkeit von 1%.
+
+Diese Zufallsauswahl, aus einem zuvor bestimmten Ausschnitt aller Tokens, ist die eigentliche Vorhersage (Inferenz) des nächsten Tokens. Das LLM berechnet also nicht nur das wahrscheinlichste nächste Token, sondern es berechnet die Wahrscheinlichkeiten aller Tokens, grenzt anschließend die Auswahl ein und wählt daraus letztlich per Zufall eines aus.
 
 ### Diagrammartig zusammengefasst
 
