@@ -237,13 +237,15 @@ const classification = categories
 
 const threshold = 0.85;
 const isForbidden = classification.score >= threshold;
+```
 
+```ts
 // Beispielausgabe:
-// {
-//   category: "weapon_explosive_instruction",
-//   matchCount: 1,
-//   score: 0.85
-// }
+{
+  category: "weapon_explosive_instruction",
+  matchCount: 1,
+  score: 0.85
+}
 ```
 
 Er wird den Prompt aber auch von einem oder mehreren Modellen analysieren lassen. Das muss kein LLM sein. Es können auch kleinere Modelle sein, die speziell für die Klassifikation auf eine Vielzahl von Beispielen trainiert wurden, um verbotene Inhalte zu erkennen. Bei unklaren Fällen kann dann auch noch ein LLM (mit mehr Wissen und Kontext) eine Einschätzung abgeben.
