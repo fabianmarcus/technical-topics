@@ -14,6 +14,10 @@ Eine kurze Info pro Tag reicht, um nach 13 Tagen eine fundierte Basis zu den Kri
 
 Darin ist auch leicht ersichtlich, was eine Webanwendung erfüllen muss, um ein bestimmtes A-11y-Level zu erreichen. Die Levels sind in A, AA und AAA unterteilt - in Anlehnung an die WCAG (Web Content Accessibility Guidelines von der W3C).
 
+Auch dieser Blogartikel gibt einen guten Überblick zu den essentiellen Grundlagen der Barrierefreiheit für Frontend-Entwickler:
+
+[https://martijnhols.nl/blog/accessibility-essentials-every-front-end-developer-should-know](https://martijnhols.nl/blog/accessibility-essentials-every-front-end-developer-should-know)
+
 ## Semantik HTML
 
 Die Verwendung von semantischem HTML ist mehr als die halbe Miete für die Barrierefreiheit einer Webanwendung. Das korrekte Verwenden von HTML-Elementen, die die Bedeutung und Struktur des Inhalts widerspiegeln, ermöglicht es assistiven Technologien, den Inhalt besser zu interpretieren und den Benutzern eine bessere Erfahrung zu bieten.
