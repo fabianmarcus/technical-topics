@@ -2,9 +2,73 @@
 
 Technische Vokabeln, die mir beim Recherchieren zu den Themen begegnet sind und unklar waren. Ich habe sie hier gesammelt. Die Erläuterungen sind nicht immer vollständig oder präzise korrekt, aber sie helfen mir, die Begriffe zu verstehen und einzuordnen.
 
+| Verzeichnis |
+| --- |
+| [Backpropagation](#backpropagation) |
+| [Beam/Greedy Search](#beamgreedy-search) |
+| [Chunk](#chunk) |
+| [Deterministisch, nicht-deterministisch](#deterministisch-nicht-deterministisch) |
+| [Embedding-Vektor](#embedding-vektor) |
+| [Embedding-Matrix](#embedding-matrix) |
+| [Fine-Tuning](#fine-tuning) |
+| [Gewicht, Gewichtung](#gewicht-gewichtung) |
+| [Inferenz (Vorhersage)](#inferenz-vorhersage) |
+| [Optimizer (Trainingsprogramm)](#optimizer-trainingsprogramm) |
+| [Prompting Template](#prompting-template) |
+| [Sampling](#sampling) |
+| [Semantik, semantisch](#semantik-semantisch) |
+| [Token](#token) |
+| [Token-ID](#token-id) |
+| [Transformer](#transformer) |
+
+---
+
 ## Backpropagation
 
 ## Beam/Greedy Search
+
+## Chunk
+
+Antwort von Copilot:
+
+Ein Chunk ist ein kleiner, zusammenhängender Textabschnitt eines großen Dokuments.
+
+**Beispiel:** Ein 1000-Seiten-Dokument wird nicht als Ganzes verarbeitet, sondern z. B. in Abschnitte von 300 bis 1000 Tokens zerlegt. Jeder dieser Abschnitte ist ein Chunk.
+
+**Warum man das macht:**
+
+- Das Kontextfenster ist begrenzt.
+- Suche wird präziser, weil man gezielt passende Teilstellen findet.
+- Verarbeitung wird schneller und günstiger.
+
+**Typische Eigenschaften eines Chunks:**
+
+- Feste oder halb-feste Größe (z. B. 500 Tokens).
+- Oft mit Overlap zum nächsten Chunk (z. B. 50 bis 100 Tokens), damit beim Schnitt keine wichtigen Infos verloren gehen.
+- Metadaten wie Quelle, Seitenzahl, Kapitel, Überschrift.
+Mini-Beispiel:
+
+Chunk 1: Seite 1 bis 2, Tokens 1-500
+Chunk 2: Seite 2 bis 3, Tokens 450-950
+Chunk 3: Seite 3 bis 4, Tokens 900-1400
+
+So kann das System später genau die Chunks in den Prompt holen, die semantisch zur Frage passen.
+
+**Typische Strategien sind:**
+
+- Größenregel: Text wird auf z. B. 300 bis 1000 Tokens pro Chunk geschnitten, damit Chunks ins Kontextbudget passen.
+- Sprachliche Grenzen: Wenn möglich, wird an Satz-, Absatz- oder Überschriften-Grenzen getrennt statt mitten im Satz.
+- Struktur des Dokuments: Bei PDFs/Docs nutzt man oft Kapitel, Unterkapitel, Listen, Tabellenblöcke oder Seitenblöcke als natürliche Grenzen.
+- Overlap: Chunks überlappen sich bewusst etwas (z. B. 10 bis 20 %), damit Informationen am Rand nicht verloren gehen.
+- Nachgelagerte Qualitätskontrolle: Viele Pipelines prüfen anschließend, ob Chunks „zu heterogen“ oder „zu kurz“ sind, und mergen/splitten sie nach.
+- Semantisches Chunking (fortgeschritten): Statt nur nach Länge trennt man dort, wo sich das Thema ändert. Das passiert z. B. über Embeddings oder Ähnlichkeits-Schwellen.
+
+**Wichtig: Es gibt kein universell perfektes Chunking.** Die beste Methode hängt von Dokumenttyp und Use Case ab:
+
+- Gesetzestext: eher strukturtreu (Paragraphen)
+- Handbuch: Kapitel/Abschnitte
+- Chat-Logs: zeitliche oder thematische Blöcke
+- Scans/OCR: oft kürzere Chunks wegen Fehlerrauschen
 
 ## Deterministisch, nicht-deterministisch
 
