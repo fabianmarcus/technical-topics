@@ -6,6 +6,10 @@ MCP ist das HTTP für KI-Modelle (LLMs). Es standardisiert die Kommunikation zwi
 
 Das Protokoll definiert standardisiertes JSON(-RPC) für die Kommunikation zwischen Client und Server. Ähnlich zu HTTP, das standardisierte Methoden (GET, POST, PUT, DELETE) und Statuscodes definiert.
 
+Eine ziemlich ausführliche Dokumentation findet sich auf der [offiziellen Website](https://modelcontextprotocol.io).
+
+## Pseudo-Beispiel
+
 Pseudo-Beispiel für eine Anfrage eines Agenten mit MCP Client an einen beliebigen MCP-Server, um eine Liste der verfügbaren Tools zu erhalten.
 
 Zunächst erfolgt der Handshake, also die gegenseitige Abstimmung was möglich ist:
