@@ -46,7 +46,7 @@ Was bedeuten diese ganzen Wörter...
 ### Tokens, Tokenisierung
 
 **Tokenisierung** ist das Zerlegen von Text in einzelne Teile.  
-Ein **Token** kann ein Wort, nur ein Teil eines Wortes oder auch nur ein Satzzeichen sein.
+**Ein Token** kann ein Wort, nur ein Teil eines Wortes oder auch nur ein Satzzeichen sein.
 
 ***Tokenizer:*** Die Tokenisierung erfolgt durch den sogenannten *Tokenizer*. Der Tokenizer selbst muss auch trainiert oder konfiguriert werden, damit er aus den Trainingsdaten ein immer gleiches Vokabular ableiten kann. Dazu wird ihm ein individueller Algorithmus hinterlegt. Das Vokabular für einen Textdatensatz ist nur pro Tokenizer immer gleich. Unterschiedlich eingestellte Tokenizer ergeben unterschiedliche Vokabulare. Das Training des Tokenizers erfolgt vor dem Training des LLMs auf Basis der Trainingsdaten.
 
@@ -80,7 +80,7 @@ Die ID von `Tür`, `1234` wird nun in einen Embedding-Vektor umgewandelt. Ein Ve
 ID 1234 = Vektor [0.1, 0.2, 0.3, 0.4]
 ```
 
-In der realen Praxis sind die Vektoren viel größer und haben mehrere hundert oder tausend Dimensionen. Jede Zahl ist eine Position in diesem multidimensionalen Raum. Aus der Schule kennt man den zweidimensionalen Raum (x,y) und den dreidimensionalen Raum (x,y,z). Ein Vektor hat in unserem KI-Kontext aber eher hunderte oder tausende Dimensionen, die man sich nur schwer vorstellen kann. *(mehr weiß ich hierüber auch nicht)*
+In der realen Praxis sind die Vektoren viel größer. Jede Zahl ist eine Position in diesem multidimensionalen Raum. Aus der Schule kennt man den zweidimensionalen Raum (x,y) und den dreidimensionalen Raum (x,y,z). Ein Vektor hat in unserem KI-Kontext aber eher hunderte oder tausende Dimensionen, die man sich nur schwer vorstellen kann. *(mehr weiß ich hierüber auch nicht)*
 
 **Der Clou an der ganzen Sache ist,** dass diese Vektoren mathematisch miteinander verglichen werden können. Je ähnlicher zwei Vektoren sind, je näher sie im Vektorraum beieinanderliegen, desto ähnlicher sind auch die Informationen, die sie repräsentieren. So kann das LLM später erkennen, dass `Tür` und `Fenster` ähnliche Konzepte sind, während `Tür` und `Hund` sehr unterschiedliche Konzepte sind.
 
@@ -90,7 +90,7 @@ In der realen Praxis sind die Vektoren viel größer und haben mehrere hundert o
 
 Nun, da die gesammelten Textdaten in Tokens und Vektoren umgewandelt vorliegen, kann das eigentliche Training des LLMs beginnen. Es lernt, welche Tokens in welchen Kontexten typischerweise zusammen auftreten. Dabei werden die Embedding-Vektoren und weitere interne Gewichte schrittweise angepasst, um Vorhersagefehler zu verringern. Es entstehen Vektorrepräsentationen, in denen ähnliche Kontexte oft näher beieinanderliegen, während das Modell gleichzeitig die nächste-Token-Vorhersage verbessert.
 
-Im Training verfeinert das LLM die statistischen Zusammenhänge zwischen den Tokens, um in einer Antwort das nächste Token eines Satzes besser vorhersagen zu können.
+**Im Training verfeinert das LLM die statistischen Zusammenhänge zwischen den Tokens, um in einer Antwort das nächste Token eines Satzes besser vorhersagen zu können.**
 
 Der Ablauf ist ungefähr so:
 
@@ -119,7 +119,7 @@ Der generelle Ablauf ist also ungefähr so:
 - Die Vektoren werden durch das LLM geschickt, das die Vorhersage des nächsten Tokens berechnet
 - Ein passendes nächstes Token wird ausgewählt und an die bisherige Tokensequenz (Prompttokens + neue Tokens) angehängt
 - Diese erweiterte Tokensequenz wird erneut durch das LLM verarbeitet, um das nächste Token vorherzusagen
-- Dieser Prozess wird wiederholt, bis das LLM ein Endtoken vorhersagt oder die maximale Länge der Antwort erreicht ist
+- Dieser Prozess wird wiederholt, bis das LLM ein Endtoken vorhersagt oder die maximale Länge der Antwort erreicht ist ([Kontextfenster](./Kontext.md#kontextfenster)).
 
 Dieser ganze Prozess der Vorhersage (Inferenz) ist ein Teilbereich des Buzzwords NLP, Natural Language Processing, das oft im Zusammenhang mit Künstlicher Intelligenz und Large Language Models fällt. Damit beschäftige ich mich noch gesondert.
 
@@ -131,7 +131,7 @@ Sampling bedeutet im KI-Kontext, mit einer bestimmten Methode einen Ausschnitt v
 
 Aus diesem Ausschnitt wird dann das nächste Token per gewichtetem Zufall (Weighted Random Sampling) ausgewählt. Gewichtet bedeutet, dass die Wahrscheinlichkeit, dass ein Token ausgewählt wird, von seiner berechneten Wahrscheinlichkeit abhängt. Ein Token mit einer Wahrscheinlichkeit von 60% wird also häufiger ausgewählt als ein Token mit einer Wahrscheinlichkeit von 1%.
 
-Diese Zufallsauswahl, aus einem zuvor bestimmten Ausschnitt aller Tokens, ist die eigentliche Vorhersage (Inferenz) des nächsten Tokens. Das LLM berechnet also nicht nur das wahrscheinlichste nächste Token, sondern es berechnet die Wahrscheinlichkeiten aller Tokens, grenzt anschließend die Auswahl ein und wählt daraus letztlich per Zufall eines aus.
+Diese Zufallsauswahl, aus einem zuvor bestimmten Ausschnitt aller Tokens, ist die eigentliche Vorhersage (Inferenz) des nächsten Tokens. Das LLM berechnet also nicht das wahrscheinlichste nächste Token, sondern es berechnet die Wahrscheinlichkeiten aller Tokens, sortiert sie, grenzt anschließend die Auswahl ein und wählt daraus letztlich per Zufall eines aus.
 
 ### Diagrammartig zusammengefasst
 
