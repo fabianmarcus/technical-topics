@@ -14,7 +14,7 @@ Kurzum: Der Kontext ist **alles**, was das Modell über den aktuellen [Prompt](.
 
 ## Kontextfenster
 
-Das Kontextfenster ist die technische Spezifikation eines Kontextes eines LLMs. Es entscheidet darüber, wie gut es zuhört, wie gesprächig es antwortet und wie teuer es deshalb ist. Bei Autos spricht man über PS und autonomes Fahren, bei LLMs über maximal mögliche Tokens und Reasoning-Fähigkeit. Das Kontextfenster bezieht sich auf den gesamten Gesprächsverlauf, der zum Zeitpunkt einer einzelnen Anfrage an das LLM übergeben wird und auf dessen Antwort durch das LLM.
+Das Kontextfenster ist die technische Spezifikation eines Kontextes eines LLMs. Es entscheidet darüber, wie gut es zuhört, wie gesprächig es antwortet und wie teuer es deshalb ist. Bei Autos spricht man über PS und autonomes Fahren, bei LLMs über maximal mögliche Tokens und Reasoning-Fähigkeit. Das Kontextfenster bezieht sich auf die gesamten Informationen, die zum Zeitpunkt einer einzelnen Anfrage an das LLM übergeben werden und auf deren Antwort durch das LLM.
 
 Bekannt sein dürfte, dass es unterschiedliche LLMs auf dem Markt gibt; nicht nur von unterschiedlichen Anbietern, sondern auch verschiedene Versionen desselben LLMs vom selben Anbieter, die letztlich nur unterschiedlich konfiguriert wurden. Eine der wichtigsten Konfigurationen ist die Größe des Kontextfensters.
 
@@ -36,7 +36,7 @@ Bei einem harten Zuschnitt wird einfach am Limit des Kontextfenster abgeschnitte
 
 Bei einem smarten Zuschnitt wird versucht, den Kontext vor dem Trunkieren so zu verändern, dass die wichtigsten Informationen erhalten bleiben. Der Kontext kann zum Beispiel zuvor inhaltlich zusammengefasst werden (Stichwort: *LLMLingua*), irrelevante Informationen können entfernt werden oder die Reihenfolge der Informationen kann verändert werden, um die wichtigsten Informationen an den Anfang zu bringen (Stichworte: *System-Prompt-Ankern* & *Hierarchische Zusammenfassung*).
 
-Wenn das LLM also während einer Konversation Inhalte nicht mehr zu wissen scheint, kann es an einem Zuschnitt des Kontextes im Hintergrund liegen. Für den Benutzer läuft dieser Vorgang transparent.
+Wenn das LLM also während einer Konversation Inhalte nicht mehr zu wissen scheint, kann es an einem Zuschnitt des Kontextes im Hintergrund liegen. Für den Benutzer läuft dieser Vorgang transparent ab.
 
 ## Beispielspezifikation
 
@@ -49,4 +49,4 @@ So könnte eine Spezifikation eines LLMs aussehen:
 | Maximale Antwortlänge | 1.024 Tokens |
 | Reasoning-Fähigkeit | Hoch |
 
-Hier können bis zu 8.192 Tokens an Kontextinformationen (Prompt, vorherige Konversation, Dokumente) an das LLM geschickt werden. Das LLM kann dann eine Antwort mit bis zu 1.024 Tokens generieren.
+Hier können bis zu 8.192 Tokens an Kontextinformationen (Prompt, vorherige Konversation, Dokumente, u.a.) an das LLM geschickt werden. Das LLM kann dann eine Antwort mit bis zu 1.024 Tokens generieren. Abrupte Abbrüche treten heute aber seltener auf, weil moderne Systeme die Antwortlänge besser steuern.
