@@ -74,3 +74,11 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)
 ### Reading & Watching List
 
 - [ ] https://blog.openreplay.com/api-gateway-patterns-and-practices/?ref=dailydev
+
+### Was ist?
+
+#### KI
+
+- Retrieval Augmented Generation (RAG)
+- Restliche Vokabeln
+- Statelessness für MCP
