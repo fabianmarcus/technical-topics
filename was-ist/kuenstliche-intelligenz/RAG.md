@@ -44,18 +44,12 @@ Vereinfacht läuft es so: Beim Schreiben werden Vektoren und Metadaten indexiert
 
 In den Metadaten werden Informationen zu den Chunks gespeichert, die für die Suche und die spätere Nutzung relevant sind. Laut Copilot gehören dazu zum Beispiel:
 
-- Quelle
-Dokumentname, URL, Dateipfad oder System, aus dem der Chunk stammt.
-- Position im Original
-Kapitel, Seitenzahl, Absatznummer, Chunk-Index, Start/Ende im Text.
-- Zeitbezug
-Erstellt am, zuletzt geändert am, Index-Version, Embedding-Zeitpunkt.
-- Fachlicher Kontext
-Thema, Tags, Sprache, Dokumenttyp (FAQ, Handbuch, Ticket, Richtlinie).
-- Zugriffsregeln
-Mandant, Rollen, Gruppen, Sichtbarkeit (intern, vertraulich, öffentlich).
-- Technische Felder
-Dokument-ID, Chunk-ID, Embedding-Modellname, Vektordimension, Hash.
+- **Quelle:** Dokumentname, URL, Dateipfad oder System, aus dem der Chunk stammt.
+- **Position im Original:** Kapitel, Seitenzahl, Absatznummer, Chunk-Index, Start/Ende im Text.
+- **Zeitbezug:** Erstellt am, zuletzt geändert am, Index-Version, Embedding-Zeitpunkt.
+- **Fachlicher Kontext:** Thema, Tags, Sprache, Dokumenttyp (FAQ, Handbuch, Ticket, Richtlinie).
+- **Zugriffsregeln:** Mandant, Rollen, Gruppen, Sichtbarkeit (intern, vertraulich, öffentlich).
+- **Technische Felder:** Dokument-ID, Chunk-ID, Embedding-Modellname, Vektordimension, Hash.
 
 Einfaches, konkretes Beispiel:
 
@@ -90,7 +84,7 @@ Der Ablauf mit RAG ist wie folgt (Gemini):
 
 ## Einordnung
 
-RAG greift also nicht in den Ablauf des LLM ein, sondern erweitert vorab lediglich den Prompt um zusätzliche Informationen. Das LLM selbst bleibt unverändert und kann weiterhin nur auf das Wissen zurückgreifen, das es während des Trainings gelernt hat. Das RAG-System und das Modell müssen auch nicht zwingend etwas über sich wissen, da die Vektorisierung und die Suche in der Vektordatenbank unabhängig vom LLM erfolgen. Das LLM muss lediglich den finalen Prompt verarbeiten können.
+RAG greift also nicht in den Ablauf des [LLM](./LLM.md) ein, sondern erweitert vorab lediglich den Prompt um zusätzliche Informationen. Das LLM selbst bleibt unverändert und kann weiterhin nur auf das Wissen zurückgreifen, das es während des Trainings gelernt hat. Das RAG-System und das Modell müssen auch nicht zwingend etwas über sich wissen, da die Vektorisierung und die Suche in der Vektordatenbank unabhängig vom LLM erfolgen. Das LLM muss lediglich den finalen Prompt verarbeiten können.
 
 Aufgrund dieser unabhängigen Vorschaltung ist es relativ einfach, dem LLM ständig aktuelle Informationen bereitzustellen. Alles was getan werden muss ist, dem RAG-System weitere Chunks hinzuzufügen, die anschließend automatisiert wie oben beschrieben verarbeitet und bereitgestellt werden. Das geht über moderne Tools und Plattformen mit ein paar Mausklicks. Periodisch laufende Crawl-Prozesse können das auch automatisiert erledigen, um beispielsweise tagesaktuelle Nachrichten hinzuzufügen.
 
