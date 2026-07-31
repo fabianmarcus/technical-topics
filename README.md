@@ -69,7 +69,6 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)
 
 #### Kuenstliche Intelligenz
 
-- Retrieval Augmented Generation (RAG)
 - Restliche Vokabeln
 - KI - Produktübersicht
 - Statelessness für MCP
