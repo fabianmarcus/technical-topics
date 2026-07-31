@@ -22,7 +22,7 @@ Dieser Ansatz wird mit der Zeit sehr aufwendig; denn in der Praxis ist es mit ei
 
 ### Datenbereitstellung
 
-Die zusätzlichen eigenen Informationen werden von einer Komponente des RAG-Systems in [Chunks](./Vokabeln.md#chunk) zerlegt. Diese Chunks werden anschließend von einem Embedding-Modell tokenisiert und in Vektoren überführt bzw. in einem Vektorraum abgebildet, so wie beim LLM auch funktioniert.
+Die zusätzlichen eigenen Informationen werden von einer Komponente des RAG-Systems in [Chunks](./Vokabeln.md#chunk) zerlegt. Diese Chunks werden anschließend von einem Embedding-Modell tokenisiert und in Vektoren überführt bzw. in einem Vektorraum abgebildet, so wie es beim LLM auch funktioniert.
 
 Zusätzlich werden die erzeugten Vektoren (Embeddings) der Chunks, einige Metadaten und der Chunk-Text selbst in einer Vektordatenbank abgelegt, um mit einer Ähnlichkeitssuche nach ihnen suchen zu können.
 
