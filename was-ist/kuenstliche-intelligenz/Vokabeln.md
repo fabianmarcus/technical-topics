@@ -74,8 +74,8 @@ Das funktioniert ungefähr so:
 
 Es laufen also mehrere Vorhersage-Pfade parallel, wobei der, der am Ende die Antwort bilden soll, von Durchlauf zu Durchlauf wechseln kann. Dadurch ist die Beam Suche wesentlich robuster als die Greedy Suche, arbeitet aber auch langsamer und benötigt mehr Rechenleistung und Speicher. Das Sackgassen-Problem kann bei der Beam Suche zwar auch auftreten, aber die Wahrscheinlichkeit ist wesentlich geringer, da mehrere Vorhersage-Pfade parallel laufen. Wenn ein Pfad in einer Sackgasse endet, können die anderen Pfade trotzdem noch plausibel weiterlaufen.
 
-[Hier eine bildliche Veranschaulichung dazu.](https://towardsdatascience.com/wp-content/uploads/2021/04/1tEjhWqUgjX37VnT7gJN-4g-768x449.png)
-[Hier noch eine Veranschaulichung](https://www.researchgate.net/profile/Johannes-Rieke-2/publication/374031557/figure/fig2/AS:11431281189909429@1695211392614/Beam-search-Aus-moeglichen-Token-Sequenzen-wird-die-wahrscheinlichste-Sequenz-ausgewaehlt.png)
+- [Bildliche Veranschaulichung - I](https://towardsdatascience.com/wp-content/uploads/2021/04/1tEjhWqUgjX37VnT7gJN-4g-768x449.png)
+- [Bildliche Veranschaulichung - II](https://www.researchgate.net/profile/Johannes-Rieke-2/publication/374031557/figure/fig2/AS:11431281189909429@1695211392614/Beam-search-Aus-moeglichen-Token-Sequenzen-wird-die-wahrscheinlichste-Sequenz-ausgewaehlt.png)
 
 ## Chunk
 
