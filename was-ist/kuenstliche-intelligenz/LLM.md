@@ -100,7 +100,7 @@ Der Ablauf ist ungefähr so:
 4. Es übergibt diese zurechtgeschnittenen Ausschnitte dem LLM
 5. Das LLM versucht, die fehlenden Tokens vorherzusagen und die Sequenz wieder zu vervollständigen
 6. Das Trainingsprogramm vergleicht die Vorhersage des LLMs mit dem tatsächlichen, zuvor abgeschnittenen Token
-7. Das Trainingsprogramm berechnet die Abweichung (Fehler, Loss) der Vorhersage
+7. Das Trainingsprogramm berechnet die Abweichung (Fehler, Loss, [Backpropagation](./Vokabeln.md#backpropagation)) der Vorhersage
 8. Das Trainingsprogramm passt die Einstellung (Embeddings, Gewichte) des LLMs an, um die Vorhersage zu verbessern
 
 Dieser Prozess wird viele Millionen Mal für sehr viele tokenisierte Textausschnitte wiederholt, bis das LLM die Vorhersage des nächsten Tokens in den Trainingsausschnitten ausreichend beherrscht oder das Budget alle ist. Dann ist das LLM fertig trainiert und kann für die Vorhersage (Inferenz) genutzt werden.
