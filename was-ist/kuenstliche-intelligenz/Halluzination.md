@@ -28,8 +28,6 @@ Wie gut das LLM richtige Antworten gibt bzw. wie häufig es halluziniert, hängt
 
 Wenn das LLM auf umfassenden, qualitativ hochwertigen Daten trainiert wurde, die viele korrekte Informationen enthalten, ist die Wahrscheinlichkeit geringer, dass es halluziniert. Wenn die Trainingsdaten jedoch zu gering, fehlerhaft oder ungenau sind, wird das LLM diese Fehler häufig als Wahrheit wiedergeben. Es denkt, es sagt die Wahrheit, ist in Wahrheit aber falsch informiert; was nichts anderes als eine Halluzination ist.
 
-Halluzinationen entstehen aber nicht nur durch schlechte Trainingsdaten, sondern auch durch Zielkonflikte wie „plausibel formulieren“ vs. „Unsicherheit offen zugeben“.
-
 ### Trainingsverfahren
 
 Die Art und Weise, wie das LLM trainiert wurde, beeinflusst ebenfalls die Wahrscheinlichkeit von Halluzinationen. Modelle, die auf robusten Trainingsmethoden basieren, die auf Genauigkeit und Konsistenz abzielen, neigen weniger zu Halluzinationen. Konkret gemeint ist, dass das Training robuste Kontextrepräsentationen lernt, damit die Vorhersage des nächsten Tokens verlässlicher wird.
@@ -42,11 +40,11 @@ Klare, präzise und gut strukturierte Prompts können dazu beitragen, dass das L
 
 Genauso kann aber auch ein zu enger Prompt zu einem spezifischen Thema dazu führen, dass das LLM versucht, eine Antwort zu generieren, die nicht durch die Trainingsdaten gedeckt ist. Wer in einem Bereich arbeitet, der mit Informationen und Fachwissen arbeitet, das nur gering öffentlich zugänglich ist und kein RAG-System angebunden ist, wird feststellen, dass das LLM versucht, Wissen und Kenntnisse aus anderen ähnlichen Bereichen zu adaptieren und auf deren Grundlage eine Antwort zu generieren. Solche Antworten werden dann oft falsch oder zu ungenau sein. Auch das ist nichts anderes als eine Halluzination.
 
-Gefährlich sind auch Widersprüche zwischen System-, Entwickler- und Nutzeranweisungen, da sie zu inkonsistenten oder erfundenen Aussagen führen können.
+Gefährlich sind auch Widersprüche zwischen LLM-, Entwickler- und Nutzeranweisungen, da sie zu inkonsistenten oder erfundenen Aussagen führen können. Das ist so, als wenn drei Vorgesetzte unterschiedliche Anweisungen zur Erledigung derselben Aufgabe geben. Der eine sagt: "Mach da einfach was, hauptsache da steht was." (z.B. Benutzer-Prompt), der andere sagt: "Mach es gründlich und fundiert. Das muss stimmen." (z.B. System-Prompt) und der Dritte sagt: "Hier, ich hab schon mal angefangen, darauf kannst du aufbauen." und darin ist alles falsch (z.B. schlechte Trainings-/RAG-Daten). Hier sind Halluzinationen vorprogrammiert, weil das LLM versucht, die widersprüchlichen Anweisungen zu erfüllen und dabei auf ungenaue oder falsche Informationen zurückgreift.
 
 ### Kontext und Hintergrundinformationen
 
-Wenn das LLM über ausreichend passenden Kontext verfügt, um die Anfrage zu verstehen, ist die Wahrscheinlichkeit geringer, dass es halluziniert. Wenn jedoch wichtige Informationen fehlen oder der Kontext falsch ist, kann das Modell dazu neigen, falsche oder erfundene Antworten zu generieren. Deshalb ist RAG und [Tool Calling](./MCP.md) so wichtig, um dem LLM die Möglichkeit zu geben, auf individuelle und aktuelle Informationen zuzugreifen. Wobei auch hier darauf zu achten ist, dass ordentliche, verlässliche RAG-Quellen vorliegen und die MCP-Tools so definiert sind, dass tatsächlich das richtige Tool für die jeweilige Anfrage aufgerufen wird. Ansonsten endet auch das in Halluzinationen.
+Wenn das LLM über ausreichend passenden Kontext verfügt, um die Anfrage zu verstehen, ist die Wahrscheinlichkeit geringer, dass es halluziniert. Wenn jedoch wichtige Informationen fehlen oder der (hinzugefügte) Kontext falsch ist, kann das Modell dazu neigen, falsche oder erfundene Antworten zu generieren, weil es den Kontext maßgeblich als Wissen für die Antwort nutzt. Deshalb ist [RAG](./RAG.md) und [Tool Calling](./MCP.md) so wichtig, um dem LLM die Möglichkeit zu geben, auf individuelle und aktuelle Informationen zuzugreifen. Wobei auch hier darauf zu achten ist, dass ordentliche, verlässliche RAG-Quellen vorliegen und die MCP-Tools so definiert sind, dass tatsächlich das richtige Tool für die jeweilige Anfrage aufgerufen wird. Ansonsten endet auch das in Halluzinationen.
 
 ## Eigene Erfahrungen
 
