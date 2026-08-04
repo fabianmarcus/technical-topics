@@ -5,9 +5,9 @@ Technische Vokabeln, die mir beim Recherchieren zu den Themen begegnet sind und 
 | Verzeichnis | Unterpunkte |
 | --- | --- |
 | [Backpropagation](#backpropagation) | |
-| [Beam/Greedy Search](#beamgreedy-search) | |
+| [Beam/Greedy Search](#beam--greedy-suche) | |
 | [Chunk](#chunk) | |
-| [Deterministisch, nicht-deterministisch](#deterministisch-nicht-deterministisch) | |
+| [Deterministisch](#deterministisch-nicht-deterministisch) | |
 | [Embedding-Vektor](#embedding-vektor) | |
 | [Embedding-Matrix](#embedding-matrix) | |
 | [Fine-Tuning](#fine-tuning) | |
