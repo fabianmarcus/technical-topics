@@ -130,6 +130,8 @@ Da ein LLM durch [Sampling](#sampling) explizit unterschiedliche Ergebnisse für
 
 ## Embedding-Vektor
 
+"Vektor", "Embedding" und "Embedding-Vektor" werden im KI-Umfeld oft synonym verwendet.
+
 Text wird zu Tokens, Tokens werden zu Vektoren (siehe [LLM](./LLM.md)). Die Vektoren liegen in einem hochdimensionalen Vektorraum. X- und Y-Achse beschreiben einen 2-dimensionalen Raum. Fügt man die Z-Achse hinzu, hat man einen dreidimensionalen Raum. Embedding-Vektoren im KI-Umfeld liegen in einem hochdimensionalen Raum mit hunderten oder tausenden Dimensionen. Das ist bildlich nicht darstellbar.
 
 Über diese Dimensionen setzen sie die erzeugten Tokens bzw. ihre IDs miteinander in Beziehung. Vereinfacht gesagt, je ähnlicher sich zwei Texte sind, desto näher liegen ihre Vektoren im Vektorraum beieinander. Je unähnlicher sie sind, desto weiter entfernt liegen ihre Vektoren voneinander. Das stimmt nicht immer, aber im Grundsatz.
@@ -147,7 +149,19 @@ Jede Zahl in den eckigen Klammern ist eine Dimension des Vektors. Die Länge des
 
 ## Embedding-Matrix
 
+Eine Embedding-Matrix ist die Anordnung der [Embedding-Vektoren](#embedding-vektor) in einer Tabelle - ähnlich einer Tabelle in einer relationalen Datenbank. Jeder Vektor stellt ein Token dar. Jedes Token ist eine Zeile in der Tabelle. Die Zahlenwerte des Vektors (seine Dimensionen) sind die Spalten. Der Begriff Embedding-Matrix beschreibt also einfach eine Darstellungsform der Menge aller Embedding-Vektoren. Sie repräsentiert das gesamte Vokabular eines Modells in Form einer Tabelle.
+
 ## Fine-Tuning
+
+Beim Fine-Tuning (zu deutsch: *Feinabstimmung*) wird ein bereits trainiertes LLM mit zusätzlichen, meist spezifischen Daten nachtrainiert, um es auf einen bestimmten Anwendungsbereich zu optimieren, anstatt ein LLM von grundauf neu zu trainieren. Das spart Zeit, Rechenleistung und dadurch Geld. Dabei kann sowohl das Wissen erweitert, als auch das Verhalten des LLM angepasst werden. Dennoch ist Fine-Tuning wesentlich aufwendiger und teurer als RAG. Deshalb wird Fine-Tuning heutzutage eher in Anwendungsbereichen eingesetzt, die viel Wissen und/oder sehr spezifische Anforderungen haben, wie z. B. in der Medizin, im Recht oder in der Finanzbranche; für die meisten Anwendungsfälle ist RAG ausreichend. Fine-Tuning wird auch oft in Kombination mit RAG eingesetzt, um die Vorteile beider Ansätze zu nutzen. Nichtsdestotrotz wird auch der Fine-Tuning-Ansatz immer weiterentwickelt, um ihn einfacher, effizienter und kostengünstiger zu machen. Nennbare Cloud-Produkte sind: OpenAI Fine-Tuning API, Azure AI Foundry, AWS Bedrock, Google Vertex AI.
+
+Ein umfassender Artikel von IBM dazu: [Fine-Tuning](https://www.ibm.com/de-de/think/topics/fine-tuning)
+
+Ich selbst habe noch nicht gefinetuned und werde mich auch erst einmal nicht mit diesem Bereich beschäftigen.
+
+### Fine-Tuning vs. RAG
+
+Der Unterschied zwischen [RAG](./RAG.md) und Fine-Tuning ist, dass beim Fine-Tuning das LLM selbst erweitert oder zumindest angepasst wird, während bei RAG zusätzliche Informationen nur temporär in den Anfrage-Kontext eingespeist werden, ohne das LLM selbst zu verändern. Das LLM "lernt" also beim Fine-Tuning, während es bei RAG für genau eine Antwort kurzfristig zusätzliche Informationen zugeschustert bekommt.
 
 ## Gewicht, Gewichtung
 
