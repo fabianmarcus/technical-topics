@@ -46,20 +46,24 @@ Eingabe: "Ich war in Berlin und Hamburg."
 
 One-Shot- oder Few-Shot-Prompting bedeutet, dass das Prompt ein oder mehrere Beispiele für eine gewünschte Antwort enthält. Dabei ist es egal, ob es sich nur um das System-Prompt, nur das Benutzer-Prompt oder um beide zusammen handelt. Es bedeutet einfach nur, dass ein oder mehrere Beispielantworten im Prompt-Kontext vorhanden wurden.
 
-Beispiel für einen One-Shot Prompt, bestehend aus System-Prompt und Benutzer-Prompt:
+Beispiel:
+
+*Hinterlegtes One-Shot System-Prompt:*
 
 ```text
 [System-Prompt]
-Extrahiere alle Stadtnamen aus dem gegebenen Text und gib sie als JSON-Array zurück.
+Extrahiere alle Stadtnamen aus dem Benutzer-Text und gib sie als JSON-Array zurück.
 
-[Beispiel]
+[Beispielausgabe]
 Eingabe: "Ich war in Berlin und Hamburg."
 Ausgabe: ["Berlin", "Hamburg"]
 ```
 
+*Anfrage eines Benutzers:*
+
 ```text
 [Benutzer-Prompt]
-Eingabe: "Ich war in Bonn und München."
+Eingabe: "Bei meiner Flucht vor Society war ich in München, Köln und Frankfurt."
 ```
 
 (Die eckigen Klammern dienen nur der Strukturierung, sie haben keine feste Bedeutung im Prompt-Kontext. Es können auch andere Mittel zur Strukturierung verwendet werden mit dem gleichen Ergebnis.)
@@ -82,7 +86,7 @@ Benutzer-Persona und Modell-Persona sollten sich natürlich nicht widersprechen.
 
 In der Praxis ist es mittlerweile aber auch so, dass die großen Chatbots wie ChatGPT, Gemini oder Claude solche Informationen selbständig erkennen, damit ein Benutzerprofil anreichern und das in Konversationen berücksichtigen. Der Benutzer muss sich also nicht selbst eine Rolle zuweisen, sondern kann einfach normal mit dem Modell sprechen. Das Modell erkennt dann automatisch, wie es den Benutzer einzuordnen hat und die Antworten ausrichten muss. Kleinere Anwendungen, die ein klares Ziel durch die Interaktion mit dem Modell verfolgen, definieren diese Rollen selbst; der Benutzer hat keine Möglichkeit, sie anzupassen.
 
-Konkretes Beispiel, wie so eine Personas-Definitionsdatei aussehen kann:
+Konkretes Beispiel, wie so eine Persona-Definitionsdatei aussehen kann:
 
 ```text
 [Modell-Persona]
@@ -127,7 +131,15 @@ Bei einer Filmempfehlung könnten das zum Beispiel sein: `title`, `year`, `direc
   "director": "Christopher Nolan",
   "genre": ["Action", "Sci-Fi", "Thriller"],
   "rating": 8.8,
-  "summary": "A skilled thief is given a chance at redemption if he can successfully perform an inception, planting an idea into a target's subconscious."
+  "summary": "Einem geschickten Dieb wird die Chance auf Wiedergutmachung geboten, wenn es ihm gelingt, eine „Inception“ durchzuführen – also eine Idee im Unterbewusstsein einer Zielperson zu verankern."
+},
+{
+  "title": "Shutter Island",
+  "year": 2010,
+  "director": "Martin Scorsese",
+  "genre": ["Mystery", "Thriller"],
+  "rating": 8.2,
+  "summary": "Ein vermeintlicher U.S. Marshal untersucht das Verschwinden eines Mörders, der aus einer psychiatrischen Anstalt entkommen ist."
 }
 ```
 
@@ -290,6 +302,8 @@ if(classifier.category == "weapon_explosive_instruction" && classifier.score > 0
 
 ### Angriffsmöglichkeiten
 
+Prompt Injection und Jailbreaking sind neue Formen des Hackings im Bereich *Social Engineering*. Um sich dagegen zu schützen, werden [Klassifikatoren, Guardrails und Safety-Policies](#klassifikatoren-safety-policies-guardrails) dem Modell vor- und nachgeschaltet.
+
 #### Prompt Injection
 
 Für einen Benutzer einer KI-Anwendung sind weder das System-Prompt, noch die Modell-Interna ersichtlich. Er steuert die Anwendung über die Eingabe von Benutzer-Prompts. Wie wir aber bereits wissen (siehe oben, "Kontext"), werden die verschiedenen Prompts nicht separat an das Modell übergeben, sondern zu einem großen Prompt-Kontext zusammengefügt. Prompt Injection meint die Manipulation dieses Prompt-Kontextes durch den Benutzer, um das Modell zu nicht vorgesehenen Handlungen zu verleiten.
@@ -304,10 +318,8 @@ In einem KI-System ohne Sicherheitsmechanismen müsste der Benutzer in seinen Pr
 
 Das ist natürlich ein vereinfachtes Beispiel. In der realen Praxis läuft es eher über indirekte oder gestückelte Anweisungen, Analogien, unterschiedliche Kontexte oder sonstige clevere Formulierungen, um das Modell auszutricksen.
 
-Prompt Injection bzw. Jailbreaking sind neue Formen des Hackings im Bereich des Social Engineerings. Um sich dagegen zu schützen, werden Klassifikatoren, Guardrails und Safety-Policies dem Modell vor- und nachgeschaltet.
-
 ### Zusammenfassende Metapher
 
-Eine Mutter schickt ihren kleinen Sohn zum Einkaufen in ein Lebensmittelgeschäft um die Ecke. Sie sagt ihm, was er kaufen darf und dass er der Verkäuferin sagen soll, was er haben möchte. Gleichzeitig gibt sie ihm einen Zettel mit, auf dem ein Text an die Verkäuferin steht, der erklärt, worum es geht und was der Sohn alles kaufen darf und was nicht. Der Sohn selbst kann den Text nicht lesen, er muss nur den Zettel weitergeben. Nun geht der Junge in den Laden, gibt der Verkäuferin den Zettel und redet gleichzeitig mit ihr. Die Verkäuferin liest den Zettel und weiß nun sowohl von der Mutter als auch aus der Konversation mit dem Jungen, worum es geht. Sie gibt ihm die gewünschten Sachen und schickt ihn samt Zettel wieder nach Hause. Wichtig klarzustellen ist, dass die Verkäuferin ihr eigenes Regelwerk und das letzte Wort hat. Wenn sie zum Beispiel nicht einverstanden damit ist, dem Jungen das Gewünschte mitzugeben (z. B. Alkohol oder einen gefährlichen Gegenstand), kann sie ihn auch mit ohne alles wieder wegschicken oder nur einen Teil mitgeben. Insbesondere, wenn das, was der Junge fordert, gar nicht zum Zettel passt.
+Eine Mutter schickt ihren kleinen Sohn zum Einkaufen in ein Lebensmittelgeschäft um die Ecke. Sie sagt ihm, was er kaufen darf und dass er der Verkäuferin sagen soll, was er haben möchte. Gleichzeitig gibt sie ihm einen Zettel mit, auf dem ein Text an die Verkäuferin steht, der erklärt, worum es geht und was der Sohn alles kaufen darf und was nicht. Der Sohn selbst kann den Text nicht lesen, er muss nur den Zettel weitergeben. Nun geht der Junge in den Laden, gibt der Verkäuferin den Zettel und redet gleichzeitig mit ihr. Die Verkäuferin liest den Zettel und weiß nun sowohl von der Mutter als auch aus der Konversation mit dem Jungen, worum es geht. Sie gibt ihm die gewünschten Sachen und schickt ihn wieder nach Hause. Wichtig klarzustellen ist, dass die Verkäuferin ihr eigenes Regelwerk und das letzte Wort hat. Wenn sie zum Beispiel nicht einverstanden damit ist, dem Jungen das Gewünschte mitzugeben (z. B. Alkohol oder einen gefährlichen Gegenstand), kann sie ihn auch mit ohne alles wieder wegschicken oder nur einen Teil mitgeben. Insbesondere dann, wenn das, was der Junge fordert, gar nicht zum Zettel passt.
 
 Die Verkäuferin ist das Modell. Die Mutter ist der Anbieter der Anwendung. Der Zettel ist das System-Prompt. Der Sohn ist der Benutzer mit seinem Benutzer-Prompt. Zudem stellen Verkäuferin, Mutter und Sohn mit ihren Rollen Personas dar, die auf ihre Art kommunizieren und handeln.
