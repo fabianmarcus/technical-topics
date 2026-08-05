@@ -165,9 +165,44 @@ Der Unterschied zwischen [RAG](./RAG.md) und Fine-Tuning ist, dass beim Fine-Tun
 
 ## Gewicht, Gewichtung
 
+Ein Gewicht ist ein einzelner Zahlenwert (Skalar) innerhalb eines Gewichtsvektors. Auch ein Gewichtsvektor besteht, wie der Embedding-Vektor, aus sehr vielen Zahlenwerten. Im Training von LLMs sind es diese Gewichtsvektoren bzw. ihre Gewichte, die angepasst werden, um die [Vorhersage](./Vokabeln.md#inferenz-vorhersage) des Modells zu verbessern. Gewichtsvektoren sind nicht zu verwechseln mit [Embedding-Vektoren](#embedding-vektor). Embedding-Vektoren sind die konkreten Repräsentationen von Tokens im Vektorraum, die mit den Gewichtsvektoren während einer Antwort verrechnet werden, um zu bestimmen, wie wichtig eine Token-Repräsentation für die Vorhersage des nächsten Tokens ist. Gewichte haben keine textliche Repräsentation; sie sind eher numerische Richtungspfeile durch das neuronale Netz. Sie prüfen, wie sehr sich ein Embedding-Vektor (Token) für eine bestimmte Behauptung (Vorhersage) triggern lässt. Je mehr er anschlägt, desto mehr lohnt es sich, mit ihm weiterzumachen.
+
+### Beispiel
+
+```text
+Embedding-Vektor (Eingabe): e = [0.2, 0.8, -0.1]
+Gewichtsvektor (eine „Richtung“ im Netz): w = [0.5, -0.3, 0.9]
+Bias: b = 0.4
+```
+
+Verrechnung mit dem Gewichtsvektor und dem Bias, um die Vorhersage des nächsten Tokens zu bestimmen:
+
+```text
+z = e * w + b
+z = (0.2 * 0.5) + (0.8 * -0.3) + (-0.1 * 0.9) + 0.4
+z = 0.1 - 0.24 - 0.09 + 0.4 = 0.17
+```
+
+Ergebnis: *z = 0.17*. Dieser Wert wird anschließend durch eine Aktivierungsfunktion (z. B. Softmax) geschickt, um die prozentuale Wahrscheinlichkeit für das nächste Token zu bestimmen.
+
+Das Ergebnis hat für sich alleine kaum Bedeutung. Wird der derselbe Embedding-Vektor aber mit weiteren Gewichtsvektoren verrechnet, können alle Ergebnisse miteinander verglichen werden und daraus die besten Wahrscheinlichkeiten für die nächsten Token bestimmt werden. *0.17* lässt aber bereits erahnen, dass dieser Embedding-Vektor in dieser Richtung (Gewichtsvektor) nicht die beste Wahl für die Vorhersage des nächsten Tokens ist.
+
+Hierbei wird auch klar, wie aufwendig der ganze Prozess ist, da ein LLM hunderte Millionen bis mehrere Milliarden Gewichte hat, die alle pro Token des momentanen Kontextes verrechnet werden müssen, um die Vorhersage des nächsten Tokens zu bestimmen. Es handelt sich zwar um einfache mathematische Operationen, aber die Masse an Berechnungen ist enorm.
+
+### Metapher
+
+Man kann es sich vorstellen, als wenn man mit einem Taxi durch die Galaxis fliegt. Um dort anzukommen, wo man hin möchte, wird das Taxi vor der Fahrt auf die Gravitationseigenschaften der Sterne der Galaxis eingestellt. Danach muss das Taxi nicht mehr viel machen. Bestimmte Sterne ziehen das Taxi aufgrund seiner Einstellung automatisch auf die richtige Bahn, während andere Sterne das Taxi abstoßen. So bounced es von Stern zu Stern durch das Universum, bis der Taxifahrer anhält oder die maximale Fahrtzeit erreicht ist.
+
+Die Metapher hinkt hier und da. Das ist aber nicht schlimm, denn sie verdeutlicht trotzdem gut:
+
+- wie man sich ein neuronales Netz vorstellen muss: nicht nur links und rechts, sondern auch oben und unten, vorne und hinten, mehrdimensional in alle Richtungen.
+- dass die Gewichte vorgegeben sind: so wie die bereits existierenden Sterne das Taxi anziehen und das Taxi somit nicht selbst fährt, werden Embedding-Vektoren mit bereits trainierten Gewichten verrechnet, um die Vorhersage des nächsten Tokens zu bestimmen.
+- dass es kein definiertes Ziel gibt: das Taxi fährt nicht zu einem bestimmten Zielstern, sondern wird auf die Gravitationseigenschaften der Galaxis eingestellt und fährt so lange, bis der Taxifahrer anhält. Das Ziel eines LLMs ist die Vorhersage des nächsten Tokens, das sich aus den Gewichten und den Embedding-Vektoren ergibt - also kein vorher feststehender Endsatz. So wie die Sterne das Taxi auf der gewünschten Bahn halten, sorgen die Gewichte dafür, dass die Vorhersage des nächsten Tokens plausibel ist.
+- dass die Eingabe (Prompt) die Fahrt beeinflusst: werden dem Taxi unpassende Gravitationswerte eingestellt, fliegt es wahrscheinlich völlig verkehrt durch die Galaxis. Genauso kann ein LLM durch einen unverständlichen Prompt zu einer völlig unpassenden Vorhersage des nächsten Tokens kommen. Ein LLM, das nur auf Englisch trainiert wurde, kann z. B. keine plausiblen Vorhersagen für einen deutschen Prompt liefern.
+
 ## Inferenz (Vorhersage)
 
-Inferenz, auch Vorhersage, ist die Berechnung des nächsten Tokens einer Antwort auf Basis des Kontextes und der bisher vorhergesagten Tokens. Der Prozess läuft dabei in mehreren Schritten streng sequenziell ab:
+Inferenz, auch Vorhersage, ist die Berechnung des nä chsten Tokens einer Antwort auf Basis des Kontextes und der bisher vorhergesagten Tokens. Der Prozess läuft dabei in mehreren Schritten streng sequenziell ab:
 
 1. Das Modell analyisiert die zur Verfügung stehenden Daten und berechnet daraus einen "rohen Punktwert" (Logits) für jedes Token im Vokabular, das als nächstes Token kommen könnte.
 2. Alle Logits werden anschließend durch eine Softmax-Funktion in konkrete Wahrscheinlichkeiten (0% - 100%) umgewandelt.
