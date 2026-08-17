@@ -216,6 +216,12 @@ Hier etwas ausführlicher: [Funktionsweise eines LLMs](./LLM.md)
 
 ## Optimizer (Trainingsprogramm)
 
+Der Optimizer übernimmt die Gewichtsaktualisierung nach einer falschen Vorhersage. Dafür ist ihm ein bestimmter Algorithmus (in Form einer Rechenformel) hinterlegt. Es gibt verschiedene Algorithmen, die sich in Art und Weise unterscheiden, wie sie die Gewichte anpassen. Alle haben unterschiedliche Schwerpunkte mit Stärken und Schwächen. **(Mehr zu den Algorithmen weiß ich hier auch nicht.)**
+
+Die Gewichtsaktualisierung erfolgt in der Regel nach der [Backpropagation](#backpropagation) und arbeitet mit ihren Ergebnissen. Der Optimizer ist damit quasi der letzte Schritt einer Trainingsiteration.
+
+Unter [Backpropagation](#backpropagation) und in [LLM](./LLM.md) ist der Trainingsprozess näher beschrieben.
+
 ## Prompt Template
 
 Ein Prompt Template legt einen bestimmten Aufbau des Prompts sowie seinen Text bereits größtenteils fest. In dem vorfomulierten Text sind Platzhalter enthalten, die vor dem Absenden des Prompts bzw. vor Übergabe an das LLM durch konkrete Werte ersetzt werden.
@@ -313,10 +319,10 @@ Die Tokenisierung erfolgt durch den sogenannten *Tokenizer*. Der Tokenizer ist e
 
 Da Tokens immer noch aus Textzeichen bestehen, für die mathematischen Verrechnungen der Vektoren aber Zahlen benötigt werden, arbeitet das Modell tatsächlich gar nicht mit den Tokens selbst, sondern mit ihren IDs. Jedes Token bekommt vom Tokenizer eine eindeutige numerische ID (meistens einfach hochgezählt), die das Token im Vokabular des Modells repräsentiert. Für alle weiteren Vektorberechnungen wird nur noch diese ID herangezogen.
 
-### Beispiel
+### Beispiele für Tokenisierung
 
 ```text
-Beispiel: Das Wort "Tokenisierung" könnte vom Algo des Tokenizers in Tokens zerlegt werden als:
+Beispiel: Das Wort "Tokenisierung" könnte vom Algo des Tokenizers zerlegt werden in:
 - "Token"
 - "isier"
 - "ung"
@@ -332,3 +338,24 @@ Beispiel: "Der Türrahmen ist aus Holz.":
 ```
 
 ## Transformer
+
+Ganz grundsätzlich transformiert ein Transformer die Eingabe in eine Ausgabe.
+
+Ein Transformer ist die Kernarchitektur bzw. die Kernfunktionalität innerhalb eines Modells. Die meisten heutigen LLMs basieren auf der Transformer-Architektur. Sie umfasst den mathematisch-rechnerischen Teil der Vorhersage. Dazu zählen:
+
+- Berechnung der Embedding-Vektoren der Tokens im Kontext des Prompts.
+- Ergänzung von Positionsinformationen, damit die Reihenfolge der Tokens berücksichtigt wird.
+- Berechnung der Aufmerksamkeit (Attention) zwischen den Tokens.
+- Berechnung der Wahrscheinlichkeiten (Logits) für das nächste Token (zumindest im Decoder-LLM-Kontext).
+
+Vereinfacht: Ein Transformer ist ein sehr leistungsfähiger Kontext-Auswerter für Tokens. Genau deshalb eignet er sich so gut für Textgenerierung, Übersetzung, Zusammenfassung und viele andere Sprachaufgaben.
+
+Zur besseren Abgrenzung: Das ganze Drumherum, wie z. B. Tokenisierung, Sampling, Vorhersage-Training (Loss, Backpropagation, Optimizer), RAG oder Chunking gehören nicht zur Transformer-Architektur, sondern sind zusätzliche Funktionalitäten, die ein LLM erst zu einem kompletten System machen.
+
+### Decoder-only Transformer (GPT-Stil)
+
+Es gibt verschiedene Architekturstile, eine Eingabe zu transformieren.
+
+Die Decoder-only-Architektur ist der Stil, der bei GPT-Modellen verwendet wird. Viele heutige Chat-LLMs arbeiten ebenfalls decoder-only oder decoder-dominant. Exakte Architekturdetails werden je nach Anbieter aber oft nur teilweise veröffentlicht.
+
+Bei dieser Variante wird die Eingabe Schritt für Schritt verarbeitet. Das Modell sagt immer nur das nächste Token voraus, basierend auf dem bisherigen Kontext. Dadurch ist sie besonders gut für die Textgenerierung geeignet. "Decoder-only" bezeichnet also die in [LLM](./LLM.md) beschriebene autoregressive Generationsweise: nächstes Token aus vorherigem Kontext.
