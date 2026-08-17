@@ -12,12 +12,12 @@ Für den Anfang sind ein paar allgemeinere Themen hinzugefügt. Mit der Zeit sol
 
 | Bereich | Fokus |
 | --- | --- |
-| [a11y](a11y/) | Accessibility-Grundlagen und ARIA-Hinweise. |
-| [backend](backend/) | Datenbanken und Backend-Frameworks. |
-| [cloud](cloud/) | Cloud-Konzepte sowie Azure- und Google-Notizen. |
-| [dev-ops](dev-ops/) | CI/CD und Docker im DevOps-Kontext. |
-| [frontend](frontend/) | Angular, React, Bundling und Extensions. |
-| [künstliche-intelligenz](kuenstliche-intelligenz/) | Theorie, Praxis & Tools. |
-| [project-management](project-management/) | Scrum, Prozesse und grundlegende Agile-Notizen. |
+| [A11y](a11y/) | Accessibility-Grundlagen und ARIA-Hinweise. |
+| [Backend](backend/) | Datenbanken und Backend-Frameworks. |
+| [Cloud](cloud/) | Cloud-Konzepte sowie Azure- und Google-Notizen. |
+| [DevOps](dev-ops/) | CI/CD und Docker im DevOps-Kontext. |
+| [Frontend](frontend/) | Angular, React, Bundling und Extensions. |
+| [Künstliche Intelligenz](kuenstliche-intelligenz/) | Theorie, Praxis & Tools. |
+| [Projektmanagement](project-management/) | Scrum, Prozesse und grundlegende Agile-Notizen. |
 
 Falls etwas nicht stimmt, lass mir gerne ein Issue da.
