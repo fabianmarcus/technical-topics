@@ -6,7 +6,7 @@ Um RAG zu verstehen, sollte zunächst die Funktionsweise eines [LLM](./LLM.md) s
 
 Darin wird unter anderem beschrieben, dass ein LLM ein fertig trainiertes neuronales Netz ist. Trainiert wurde es auf bereits feststehenden Trainingsdaten. "Fertig" meint hier, dass sich die Daten eines LLM nach dem Training nicht mehr ändern. Das bedeutet, dass ein LLM zur Beantwortung von Fragen nur auf das Wissen zurückgreifen kann, das es während des Trainings gelernt hat. Aktuelle Nachrichten, danach erstellte Informationen und spezielles Wissen sind dem Modell ohne weiteres Zutun unbekannt.
 
-Zudem wird darin beschrieben, dass das LLM die ihm übergebene Eingabe genauso verarbeitet, wie die Informationen, die es schon hat. Das bedeutet, dass das LLM die Eingabe mit seinem Tokenizer in Tokens umwandelt, diese in einen Vektorraum überführt und ebenfalls zur Berechnung der Wahrscheinlichkeit für die nächste Token-Ausgabe nutzt. Speist man hier zusätzliches Wissen ein, statt nur einer Frage, kann das Wissen des LLM für diese Anfrage dynamisch über die Eingabe erweitert werden, da es dieses neue Wissen für die Antwort nutzen kann. Es speichert dieses Wissen aber nicht; nach der Beantwortung der Frage ist es wieder weg.
+Zudem wird darin beschrieben, dass das LLM die ihm übergebene Eingabe genauso verarbeitet, wie die Informationen, die es schon hat. Das bedeutet, dass das LLM die Eingabe mit seinem [Tokenizer](./Vokabeln.md#tokenizer) in [Tokens](./Vokabeln.md#token) umwandelt, diese in einen [Vektorraum](./Vokabeln.md#embedding-vektor) überführt und ebenfalls zur Berechnung der Wahrscheinlichkeit für die nächste Token-Ausgabe nutzt. Speist man hier zusätzliches Wissen ein, statt nur einer Frage, kann das Wissen des LLM für diese Anfrage dynamisch über die Eingabe erweitert werden, da es dieses neue Wissen für die Antwort nutzen kann. Es speichert dieses Wissen aber nicht; nach der Beantwortung der Frage ist es wieder weg.
 
 Das ist quasi die Grundlage und Idee von RAG.
 
@@ -22,11 +22,11 @@ Dieser Ansatz wird mit der Zeit sehr aufwendig; denn in der Praxis ist es mit ei
 
 ### Datenbereitstellung
 
-Die zusätzlichen eigenen Informationen werden von einer Komponente des RAG-Systems in [Chunks](./Vokabeln.md#chunk) zerlegt. Diese Chunks werden anschließend von einem Embedding-Modell tokenisiert und in Vektoren überführt bzw. in einem Vektorraum abgebildet, so wie es beim LLM auch funktioniert.
+Die zusätzlichen eigenen Informationen werden von einer Komponente des RAG-Systems in [Chunks](./Vokabeln.md#chunk) zerlegt. Diese Chunks werden anschließend von einem [Embedding-Modell](./Vokabeln.md#embedding-vektor) tokenisiert und in [Vektoren](./Vokabeln.md#embedding-vektor) überführt bzw. in einem Vektorraum abgebildet, so wie es beim LLM auch funktioniert.
 
-Zusätzlich werden die erzeugten Vektoren (Embeddings) der Chunks, einige Metadaten und der Chunk-Text selbst in einer Vektordatenbank abgelegt, um mit einer Ähnlichkeitssuche nach ihnen suchen zu können.
+Zusätzlich werden die erzeugten Vektoren ([Embeddings](./Vokabeln.md#embedding-vektor)) der Chunks, einige Metadaten und der Chunk-Text selbst in einer Vektordatenbank abgelegt, um mit einer Ähnlichkeitssuche nach ihnen suchen zu können.
 
-Beide Technologien, also das Embedding-Modell sowie die Vektordatenbank, bilden oft separat ansprechbare Dienste. Das Embedding-Modell wird für die Vektorisierung der eigenen Informationen und der Benutzeranfragen genutzt, während die Vektordatenbank für die Suche nach den passenden Chunks herangezogen wird. Sie können aber auch als Bibliotheken in die Anwendung integriert werden.
+Beide Technologien, also das Embedding-Modell sowie die Vektordatenbank, bilden oft separat ansprechbare Dienste. Das Embedding-Modell wird für die [Vektorisierung](./Vokabeln.md#embedding-vektor) der eigenen Informationen und der Benutzeranfragen genutzt, während die Vektordatenbank für die Suche nach den passenden Chunks herangezogen wird. Sie können aber auch als Bibliotheken in die Anwendung integriert werden.
 
 Der Ablauf kurz & knapp:
 
@@ -79,7 +79,7 @@ Der Ablauf mit RAG ist wie folgt (Gemini):
 3. **Ähnlichkeitssuche (Retrieval):** Mit diesem Suchvektor wird in der Vektordatenbank gesucht (z. B. durch Berechnung der Kosine-Ähnlichkeit), um die [TOP-K](./Vokabeln.md#top-k) passenden Dokumenten-[Chunks](./Vokabeln.md#chunk) zu bestimmen.
 4. **Chunk-Rückgabe:** Diese [Chunks](./Vokabeln.md#chunk) liegen in der Vektordatenbank (oder einer anderen Datenbank) als Klartext vor und werden zurückgegeben.
 5. **Prompt-Erweiterung (Augmentation):** Das RAG-System (oder ein anderes) baut nun den finalen Prompt zusammen. Dieser besteht aus dem System-Prompt, der User-Query, den zurückgegebenen Dokumenten-[Chunks](./Vokabeln.md#chunk) und sonstigen relevanten Informationen. Dieser Prompt wird dann an das LLM weitergeleitet.
-6. **LLM-Vorhersage (Inferenz):** Das LLM verarbeitet den finalen Text-Prompt auf herkömmliche Weise mit seinem Tokenizer, überführt die Tokens in seinen Vektorraum und berechnet die Wahrscheinlichkeit für die nächste Token-Ausgabe.
+6. **LLM-Vorhersage ([Inferenz](./Vokabeln.md#inferenz-vorhersage)):** Das LLM verarbeitet den finalen Text-Prompt auf herkömmliche Weise mit seinem [Tokenizer](./Vokabeln.md#tokenizer), überführt die [Tokens](./Vokabeln.md#token) in seinen Vektorraum und berechnet die Wahrscheinlichkeit für die nächste Token-Ausgabe.
 7. **Ausgabe:** Das Ergebnis wird an den Nutzer zurückgegeben.
 
 ## Einordnung

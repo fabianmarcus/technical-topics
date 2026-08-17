@@ -2,6 +2,8 @@
 
 Das Prompt ist das, was der Benutzer an das LLM schickt, um eine Antwort zu erhalten. Das kann mittlerweile in ganz unterschiedlichen Formaten geschehen:
 
+Ein vordefinierter Aufbau eines Prompts wird oft als [Prompt Template](./Vokabeln.md#prompt-template) bezeichnet.
+
 - Textbasiert: Ein einfacher Text, der an das LLM geschickt wird. Das ist die klassische Form des Prompts.
 - Dokumentbasiert: Eine Datei, die Text enthält (z. B. PDF, Word, Excel).
 - Sprachbasiert: Eine aufgenommene Spracheingabe in Form einer Audiodatei.

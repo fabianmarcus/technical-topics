@@ -56,7 +56,7 @@ Antwort des Servers:
 }
 ```
 
-Client und Server haben sich auf die Protokollversion geeinigt und die Fähigkeiten des Servers ausgetauscht. Der Client weiß nun, dass er Tools abrufen kann, dass er Ressourcen abonnieren kann und dass er Prompts abrufen kann.
+Client und Server haben sich auf die Protokollversion geeinigt und die Fähigkeiten des Servers ausgetauscht. Der Client weiß nun, dass er Tools abrufen kann, dass er Ressourcen abonnieren kann und dass er [Prompts](./Vokabeln.md#prompt-template) abrufen kann.
 
 Er sendet nun eine Benachrichtigung, dass die Initialisierung abgeschlossen ist:
 

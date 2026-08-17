@@ -30,25 +30,25 @@ Sie stand unschlüssig vor der schweren Eichentür. Das Schloss war alt und verr
 [...]
 ```
 
-**Nach dem Training ist diese Datei für die Arbeit (Inferenz) des LLM nicht mehr relevant.** Es wird mit Tokens, Vektoren und dem Vokabelheft gearbeitet, nicht mit den ursprünglichen Textdaten.
+**Nach dem Training ist diese Datei für die Arbeit ([Inferenz](./Vokabeln.md#inferenz-vorhersage)) des LLM nicht mehr relevant.** Es wird mit [Tokens](./Vokabeln.md#token), [Vektoren](./Vokabeln.md#embedding-vektor) und dem Vokabelheft gearbeitet, nicht mit den ursprünglichen Textdaten.
 
 ## Die Verarbeitung der Trainingsdaten
 
 Der weitere Workflow geht ungefähr so:
 
-- Tokenizer einstellen: der Algorithmus wird definiert, der die Trainingsdaten in Tokens zerlegt.
+- [Tokenizer](./Vokabeln.md#tokenizer) einstellen: der Algorithmus wird definiert, der die Trainingsdaten in [Tokens](./Vokabeln.md#token) zerlegt.
 - Vokabular anlegen: der Tokenizer leitet aus den Trainingsdaten ein festes, numeriertes Token-Vokabular ab.
-- Vektorisierung: die Token-IDs werden in Vektoren umgewandelt, um sie mehrdimensional vergleichen zu können.
+- [Vektorisierung](./Vokabeln.md#embedding-vektor): die Token-IDs werden in Vektoren umgewandelt, um sie mehrdimensional vergleichen zu können.
 - Training: die Vektoren werden dazu genutzt, das neuronale Netz zu trainieren, sodass das LLM die Zusammenhänge zwischen den Vektoren erkennt und daraus neue Informationen ableiten kann.
 
 Was bedeuten diese ganzen Wörter...
 
-### Tokens, Tokenisierung
+### [Tokens](./Vokabeln.md#token), [Tokenisierung](./Vokabeln.md#tokenisierung)
 
 **Tokenisierung** ist das Zerlegen von Text in einzelne Teile.  
 **Ein Token** kann ein Wort, nur ein Teil eines Wortes oder auch nur ein Satzzeichen sein.
 
-***Tokenizer:*** Die Tokenisierung erfolgt durch den sogenannten *Tokenizer*. Der Tokenizer selbst muss auch trainiert oder konfiguriert werden, damit er aus den Trainingsdaten ein immer gleiches Vokabular ableiten kann. Dazu wird ihm ein individueller Algorithmus hinterlegt. Das Vokabular für einen Textdatensatz ist nur pro Tokenizer immer gleich. Unterschiedlich eingestellte Tokenizer ergeben unterschiedliche Vokabulare. Das Training des Tokenizers erfolgt vor dem Training des LLMs auf Basis der Trainingsdaten.
+***[Tokenizer](./Vokabeln.md#tokenizer):*** Die Tokenisierung erfolgt durch den sogenannten *Tokenizer*. Der Tokenizer selbst muss auch trainiert oder konfiguriert werden, damit er aus den Trainingsdaten ein immer gleiches Vokabular ableiten kann. Dazu wird ihm ein individueller Algorithmus hinterlegt. Das Vokabular für einen Textdatensatz ist nur pro Tokenizer immer gleich. Unterschiedlich eingestellte Tokenizer ergeben unterschiedliche Vokabulare. Das Training des Tokenizers erfolgt vor dem Training des LLMs auf Basis der Trainingsdaten.
 
 [Online Tokenizer zum Ausprobieren](https://tiktokenizer.vercel.app/?model=gpt-3.5-turbo)
 
@@ -74,7 +74,7 @@ Die Liste der abgeleiteten Tokens samt ihrer numerischen ID wird in einer Datei 
 
 ### Vektorisierung
 
-Die ID von `Tür`, `1234` wird nun in einen Embedding-Vektor umgewandelt. Ein Vektor ist eine mathematische Darstellung von Informationen. Ein Vektor sieht dann z.B. so aus:
+Die ID von `Tür`, `1234` wird nun in einen [Embedding-Vektor](./Vokabeln.md#embedding-vektor) umgewandelt. Ein [Vektor](./Vokabeln.md#embedding-vektor) ist eine mathematische Darstellung von Informationen. Ein Vektor sieht dann z.B. so aus:
 
 ```text
 ID 1234 = Vektor [0.1, 0.2, 0.3, 0.4]
@@ -88,7 +88,7 @@ In der realen Praxis sind die Vektoren viel größer. Jede Zahl ist eine Positio
 
 ### Das LLM-Training
 
-Nun, da die gesammelten Textdaten in Tokens und Vektoren umgewandelt vorliegen, kann das eigentliche Training des LLMs beginnen. Es lernt, welche Tokens in welchen Kontexten typischerweise zusammen auftreten. Dabei werden die Embedding-Vektoren und weitere interne Gewichte schrittweise angepasst, um Vorhersagefehler zu verringern. Es entstehen Vektorrepräsentationen, in denen ähnliche Kontexte oft näher beieinanderliegen, während das Modell gleichzeitig die nächste-Token-Vorhersage verbessert.
+Nun, da die gesammelten Textdaten in [Tokens](./Vokabeln.md#token) und Vektoren umgewandelt vorliegen, kann das eigentliche Training des LLMs beginnen. Es lernt, welche Tokens in welchen Kontexten typischerweise zusammen auftreten. Dabei werden die [Embedding-Vektoren](./Vokabeln.md#embedding-vektor) und weitere interne [Gewichte](./Vokabeln.md#gewicht-gewichtung) schrittweise angepasst, um Vorhersagefehler zu verringern. Es entstehen Vektorrepräsentationen, in denen ähnliche Kontexte oft näher beieinanderliegen, während das Modell gleichzeitig die nächste-Token-Vorhersage verbessert.
 
 **Im Training verfeinert das LLM die statistischen Zusammenhänge zwischen den Tokens, um in einer Antwort das nächste Token eines Satzes besser vorhersagen zu können.**
 
@@ -101,9 +101,9 @@ Der Ablauf ist ungefähr so:
 5. Das LLM versucht, die fehlenden Tokens vorherzusagen und die Sequenz wieder zu vervollständigen
 6. Das Trainingsprogramm vergleicht die Vorhersage des LLMs mit dem tatsächlichen, zuvor abgeschnittenen Token
 7. Das Trainingsprogramm berechnet die Abweichung (Fehler, Loss, [Backpropagation](./Vokabeln.md#backpropagation)) der Vorhersage
-8. Das Trainingsprogramm passt die Einstellung (Embeddings, Gewichte) des LLMs an, um die Vorhersage zu verbessern
+8. Das Trainingsprogramm passt die Einstellung (Embeddings, [Gewichte](./Vokabeln.md#gewicht-gewichtung)) des LLMs an, um die Vorhersage zu verbessern
 
-Dieser Prozess wird viele Millionen Mal für sehr viele tokenisierte Textausschnitte wiederholt, bis das LLM die Vorhersage des nächsten Tokens in den Trainingsausschnitten ausreichend beherrscht oder das Budget alle ist. Dann ist das LLM fertig trainiert und kann für die Vorhersage (Inferenz) genutzt werden.
+Dieser Prozess wird viele Millionen Mal für sehr viele tokenisierte Textausschnitte wiederholt, bis das LLM die Vorhersage des nächsten Tokens in den Trainingsausschnitten ausreichend beherrscht oder das Budget alle ist. Dann ist das LLM fertig trainiert und kann für die Vorhersage ([Inferenz](./Vokabeln.md#inferenz-vorhersage)) genutzt werden.
 
 ### Antwortgenerierung durch Vorhersage (Inferenz)
 
@@ -121,7 +121,7 @@ Der generelle Ablauf ist also ungefähr so:
 - Diese erweiterte Tokensequenz wird erneut durch das LLM verarbeitet, um das nächste Token vorherzusagen
 - Dieser Prozess wird wiederholt, bis das LLM ein Endtoken vorhersagt oder die maximale Länge der Antwort erreicht ist ([Kontextfenster](./Kontext.md#kontextfenster)).
 
-Dieser ganze Prozess der Vorhersage (Inferenz) ist ein Teilbereich des Buzzwords NLP, Natural Language Processing, das oft im Zusammenhang mit Künstlicher Intelligenz und Large Language Models fällt. Damit beschäftige ich mich noch gesondert.
+Dieser ganze Prozess der Vorhersage ([Inferenz](./Vokabeln.md#inferenz-vorhersage)) ist ein Teilbereich des Buzzwords NLP, Natural Language Processing, das oft im Zusammenhang mit Künstlicher Intelligenz und Large Language Models fällt. Damit beschäftige ich mich noch gesondert.
 
 #### Sampling (Gewichtete Zufallsauswahl)
 

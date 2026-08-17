@@ -2,9 +2,9 @@
 
 ## Arbeitsweise eines LLMs
 
-Wie in [Was ist ein LLM?](LLM.md) beschrieben, generiert ein LLM Antworten auf Basis von Wahrscheinlichkeiten. Es **berechnet**, welches Wort (bzw. Token) als nächstes im Satz am wahrscheinlichsten ist, und hängt dieses an die bisherige Antwort an.
+Wie in [Was ist ein LLM?](LLM.md) beschrieben, generiert ein LLM Antworten auf Basis von Wahrscheinlichkeiten. Es **berechnet**, welches Wort (bzw. [Token](./Vokabeln.md#token)) als nächstes im Satz am wahrscheinlichsten ist, und hängt dieses an die bisherige Antwort an.
 
-Es gibt also keinen feststehenden Textstring zurück wie: `Die Tür hat eine Klinke.`, der irgendwo genau so gespeichert ist. Sondern es berechnet auf Grundlage des Prompts zunächst, dass `Die` das wahrscheinlichste erste Token der Antwort ist. Danach berechnet es ein wahrscheinlich passendes nächstes Token: `Tür`, und so weiter, bis die Antwort fertig ist: `Die Tür hat eine Klinke`.
+Es gibt also keinen feststehenden Textstring zurück wie: `Die Tür hat eine Klinke.`, der irgendwo genau so gespeichert ist. Sondern es berechnet auf Grundlage des [Prompts](./Prompt.md) zunächst, dass `Die` das wahrscheinlichste erste Token der Antwort ist. Danach berechnet es ein wahrscheinlich passendes nächstes Token: `Tür`, und so weiter, bis die Antwort fertig ist: `Die Tür hat eine Klinke`.
 
 ## Halluzination
 
@@ -38,7 +38,7 @@ Die Art und Weise, wie eine Anfrage formuliert wird, kann die Wahrscheinlichkeit
 
 Klare, präzise und gut strukturierte Prompts können dazu beitragen, dass das LLM relevantere und genauere Antworten liefert. Vieldeutige oder unklare Prompts können hingegen zu Halluzinationen führen, da das Modell versucht, die Lücken zu füllen. Ein simples Beispiel: die Angabe einer API- oder Programm-Version in einem Prompt kann zum Beispiel verhindern, dass das LLM eine Antwort auf Grundlage einer älteren Version generiert, die nicht mehr korrekt ist oder mehrere Versionen miteinander vermischt.
 
-Genauso kann aber auch ein zu enger Prompt zu einem spezifischen Thema dazu führen, dass das LLM versucht, eine Antwort zu generieren, die nicht durch die Trainingsdaten gedeckt ist. Wer in einem Bereich arbeitet, der mit Informationen und Fachwissen arbeitet, das nur gering öffentlich zugänglich ist und kein RAG-System angebunden ist, wird feststellen, dass das LLM versucht, Wissen und Kenntnisse aus anderen ähnlichen Bereichen zu adaptieren und auf deren Grundlage eine Antwort zu generieren. Solche Antworten werden dann oft falsch oder zu ungenau sein. Auch das ist nichts anderes als eine Halluzination.
+Genauso kann aber auch ein zu enger Prompt zu einem spezifischen Thema dazu führen, dass das LLM versucht, eine Antwort zu generieren, die nicht durch die Trainingsdaten gedeckt ist. Wer in einem Bereich arbeitet, der mit Informationen und Fachwissen arbeitet, das nur gering öffentlich zugänglich ist und kein [RAG](./RAG.md)-System angebunden ist, wird feststellen, dass das LLM versucht, Wissen und Kenntnisse aus anderen ähnlichen Bereichen zu adaptieren und auf deren Grundlage eine Antwort zu generieren. Solche Antworten werden dann oft falsch oder zu ungenau sein. Auch das ist nichts anderes als eine Halluzination.
 
 Gefährlich sind auch Widersprüche zwischen LLM-, Entwickler- und Nutzeranweisungen, da sie zu inkonsistenten oder erfundenen Aussagen führen können. Das ist so, als wenn drei Vorgesetzte unterschiedliche Anweisungen zur Erledigung derselben Aufgabe geben. Der eine sagt: "Mach da einfach was, hauptsache da steht was." (z.B. Benutzer-Prompt), der andere sagt: "Mach es gründlich und fundiert. Das muss stimmen." (z.B. System-Prompt) und der Dritte sagt: "Hier, ich hab schon mal angefangen, darauf kannst du aufbauen." und darin ist alles falsch (z.B. schlechte Trainings-/RAG-Daten). Hier sind Halluzinationen vorprogrammiert, weil das LLM versucht, die widersprüchlichen Anweisungen zu erfüllen und dabei auf ungenaue oder falsche Informationen zurückgreift.
 
