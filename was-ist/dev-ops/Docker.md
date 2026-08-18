@@ -11,6 +11,30 @@ Um mehrere Container als Orchester miteinander laufen zu lassen, kann man "Docke
 So viel zu meinem grundlegenden Verständnis von Docker.  
 Nachfolgend soll es nur noch um konkrete Learnings gehen, die ich bei der Arbeit mit Docker mache.
 
+## Docker Compose
+
+### profiles
+
+Das "profiles"-Feature von Docker Compose ermöglicht es, Container nur dann zu starten, wenn sie in der Konfiguration explizit angegeben werden. Das ist praktisch, wenn man z.B. einen Container für die Datenbank nur in der Entwicklungsumgebung starten möchte, aber nicht in der Produktionsumgebung.
+
+```yaml
+# [...]
+nuxt-prod:
+  profiles:
+    - prod # Aufruf über "docker compose --profile nuxt-prod up"
+    - # Weitere Profile...
+  build:
+    context: .
+    target: prod
+  ports:
+    - "3000:3000"
+  environment:
+    NUXT_TELEMETRY_DISABLED: "1"
+# [...]
+```
+
+Dabei kann ein Profil in mehreren Services angegeben werden und ein Service mehrere Profile haben.
+
 ## Eigene Erfahrungen
 
 Meine Dockerkenntnisse beschränken sich größtenteils auf die Nutzung während der Entwicklung. Mir ist die Konfiguration des `Dockerfile` und der `docker-compose.yml` vertraut. Und ich kenne die grundlegenden Befehle, um die Docker-Umgebung zu verwalten (Container, Images, Volumes, Network, etc.). Mir ist zwar auch klar, wie Docker in der CI/CD-Pipeline eingesetzt werden kann und auf dem Produktionsserver läuft. Ich habe das aber bislang nur einmal in kleinem Rahmen bearbeitet.
