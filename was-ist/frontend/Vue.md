@@ -164,6 +164,8 @@ Die [Options API](https://vuejs.org/guide/typescript/options-api) ist weiterhin 
 
 Nuxt.js ist das Framework für Vue.js, wie Next.js das Framework für React ist - mit anderen Buchstaben und Farben. Es macht aus einer Frontend-Bibliothek ein vollwertiges Framework.
 
+Mehr dazu in der Datei [Vue.Nuxt.md](./Vue.Nuxt.md).
+
 ### Routing
 
 Der Router sucht für gewöhnlich im `pages`-Verzeichnis nach Dateien.
