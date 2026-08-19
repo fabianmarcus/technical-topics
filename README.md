@@ -65,7 +65,7 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)
 - Webaim.org
 - Whocanuse
 
-### Was ist?
+### Themen für Was ist?
 
 #### Kuenstliche Intelligenz
 
@@ -73,3 +73,5 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)
 - KI - Produktübersicht
 - Statelessness für MCP
 - Copilot Instructions & Skills
+- Attention (Self Attention, Cross Attention, Multi Head Attention)
+- RAC
