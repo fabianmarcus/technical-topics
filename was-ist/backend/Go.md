@@ -4,13 +4,17 @@ Einarbeitung für ein mögliches Projekt.
 
 ## Erkenntnisse / Good to Know
 
-- In Go wird nicht standardmäßig mit Konstanten gearbeitet. Es gibt zwar das `const`-Schlüsselwort, aber es wird nicht so häufig genutzt wie in anderen Sprachen. Stattdessen werden Variablen mit dem `var`-Schlüsselwort deklariert und können zur Laufzeit geändert werden.
-- Statt `null` gibt es `nil`. `nil` kann für Pointer, Slices, Maps, Channels und Funktionen verwendet werden. Es ist der Standardwert für diese Typen, wenn sie nicht initialisiert wurden. Alle anderen Typen haben immer einen Standardwert, z.B. `0` für Zahlen, `false` für Booleans und `""` für Strings.
+- In Go wird nicht standardmäßig mit Konstanten gearbeitet. Es gibt zwar das `const`-Schlüsselwort, das wird aber nicht so häufig genutzt wie in anderen Sprachen. Stattdessen werden Variablen mit dem `var`-Schlüsselwort (oder in Short-Notation) deklariert und können zur Laufzeit geändert werden.
+- Statt `null` (oder `undefined`) gibt es `nil`. `nil` kann für Pointer, Slices, Maps, Channels und Funktionen verwendet werden. Es ist der Standardwert für diese Typen, wenn sie nicht initialisiert wurden. Alle anderen Typen haben immer einen Standardwert, z.B. `0` für Zahlen, `false` für Booleans und `""` für Strings.
 - Ein Objekt ist in Go ein Struct. Es gibt keine Klassen, Vererbung oder Interfaces wie in anderen Sprachen. Stattdessen werden Structs verwendet, um Daten zu gruppieren, und Interfaces, um Verhalten zu definieren.
 - In Go wird über Groß- und Kleinschreibung entschieden, ob ein Feld oder eine Funktion eines Moduls exportiert ist oder nicht. Kleiner Anfangsbuchstabe im Namen bedeutet nicht exportiert, großer Anfangsbuchstabe bedeutet exportiert.
 - In Go werden keine Einzelheiten eines Moduls importiert wie bei Typescript, sondern immer das ganze Modul bzw. Paket. Der Compiler regelt selbst, was benötigt wird und was nicht.
 - Es sind Zuweisungen innerhalb der if- und for-Bedingungen möglich. Dadurch lässt sich eine Variable deklarieren und gleichzeitig prüfen, ob sie einen bestimmten Wert hat.
-- Typescript ist gefühlt wesentlich lesbarer als Go.
+- Alles muss explizit importiert werden, auch Standardpakete wie `fmt` für Stringoperationen. Es gibt keine globalen Objekte wie `console` oder `Object`.
+- JSON wird nicht so nativ unterstützt wie in Typescript.
+- In Go können Mehrfachzuweisungen und Mehrfachrückgaben genutzt werden (siehe unten). Dadurch lassen sich mehrere Variablen gleichzeitig deklarieren und initialisieren, oder mehrere Werte aus einer Funktion zurückgeben.
+- In Go wird regelmäßig mit Pointern gearbeitet. In Typescript ist es zwar auch möglich, "by reference" zu arbeiten, das kommt aber nur in Ausnahmefällen vor. In Go ist es die Regel.
+- Go ist Multi-Threaded und bringt dadurch einige Problemstellungen mit sich, die in Single-Threaded-Sprachen wie Typescript nicht auftreten. Das fängt schon beim Zugriff auf eine einfache Map an.
 
 ## Syntax-Beispiele
 
@@ -120,6 +124,33 @@ func main() {
 
     fmt.Println(s, i, f, b, r, by, c, x, y, a, z, appName, maxRetries)
     fmt.Println(u1, u2, arr1, arr2, sl1, sl2, m1, m2, n, p, v, result, got, counter)
+}
+```
+
+### If-Bedingung inkl. Zuweisung
+
+```go
+if err := decoder.Decode(body); err != nil {
+    errorResponse := ResponseError{
+        Code:    "invalid_request",
+        Message: "Invalid JSON body",
+    }
+    res.WriteHeader(http.StatusBadRequest)
+    encoder.Encode(errorResponse)
+    return
+}
+```
+
+### Mehrfachzuweisung und -rückgabe
+
+```go
+var shorts = map[string]string{}
+
+func LookupCode(code string) (string, error) {
+    if url, ok := shorts[code]; ok {
+        return url, nil
+    }
+    return "", fmt.Errorf("code not found")
 }
 ```
 
