@@ -18,7 +18,7 @@ Ich bevorzuge iteratives Feature Prompting. Hierbei wird eine Anwendung oder ein
 
 Die Änderungen jeder Iteration werden durch Git Diff gut nachvollziehbar sichtbar. Danach wird committed und die nächste Iteration angegangen. So entsteht ein kontinuierlicher Entwicklungsprozess, der den Code Schritt für Schritt erweitert und verbessert. Das brigt zwar nicht den Luxus, einfach abwarten und etwas anderes tun zu können, während der Agent arbeitet. Der Arbeitsprozess wird aber dennoch extrem beschleunigt, da das Tippen, Recherchieren und Refaktorieren durch den Agenten übernommen wird. Der Entwickler kann sich komplett auf die fachliche bzw. theoretische Umsetzung konzentrieren.
 
-Der Plan-Modus der GitHub-Copilot-Extension vereinfacht das sogar weiter. Wird dem Agenten mitgeteilt, dass er den Plan wie oben beschrieben gestalten und speichern soll, kann jederzeit wieder in die angedachte Umsetzung eingestiegen werden. Der Agent kennt quasi schon vorher das Große-Ganze und kann auf Änderungen reagieren, ohne dass der Entwickler alles neu erklären muss.
+Der [Plan-Modus](https://code.visualstudio.com/docs/agents/run/planning) der Copilot Extension vereinfacht das sogar weiter. Wird dem Agenten mitgeteilt, dass er den Plan wie oben beschrieben gestalten und speichern soll, kann jederzeit wieder in die angedachte Umsetzung eingestiegen werden. Der Agent kennt quasi schon vorher das Große-Ganze und kann auf Änderungen reagieren, ohne dass der Entwickler alles neu erklären muss.
 
 ## Instructions
 
@@ -26,10 +26,10 @@ Der Plan-Modus der GitHub-Copilot-Extension vereinfacht das sogar weiter. Wird d
 
 Meine Instructions sind hier hinterlegt: [Copilot Instructions](https://github.com/fabianmarcus/copilot/blob/main/copilot-instructions.md)
 
-Sie liegen in einem eigenen [Repository und können über ein Git Submodule in jedes Projekt eingebunden werden](https://github.com/fabianmarcus/copilot). So kann ich den Code Style und die Code Struktur meiner privaten Projekte projektübergreifend einheitlich halten.
+Sie liegen in einem eigenen [Repository](https://github.com/fabianmarcus/copilot) und können als Git Submodule in jedes Projekt eingebunden werden. So kann ich den Code Style und die Code Struktur meiner privaten Projekte projektübergreifend einheitlich halten.
 
 ## Skills
 
-Wie meine [Copilot Instructions](#instructions) sind auch meine [Copilot Agent Skills](https://code.visualstudio.com/docs/agent-customization/agent-skills) in dem Repository hinterlegt. Agent Skills funktionieren ähnlich wie Instructions, sind aber auf konkrete Anwendungsfälle zugeschnitten und werden nur bei Bedarf in den Prompt-Kontext eingebunden. Sie können z. B. ganze konkrete Anweisungen für die Code-Generierung für ein bestimmtes Framework enthalten, die für die allgemeinen Instructions zu speziell wären. Auch die Skills lassen sich über ein Git Submodule in jedes Projekt einbinden.
+Wie [meine Copilot Instructions](#instructions) sind auch meine Agent Skills in dem [Repository](https://github.com/fabianmarcus/copilot) hinterlegt. [Copilot Agent Skills](https://code.visualstudio.com/docs/agent-customization/agent-skills) funktionieren ähnlich wie Instructions, sind aber auf konkrete Anwendungsfälle zugeschnitten und werden nur bei Bedarf in den Prompt-Kontext eingebunden. Sie können z. B. ganze konkrete Anweisungen für die Code-Generierung für ein bestimmtes Framework enthalten, die für die allgemeinen Instructions zu speziell wären. Auch die Skills lassen sich über ein Git Submodule in jedes Projekt einbinden.
 
 Meine Skills sind auch hier hinterlegt: [Copilot Skills](https://github.com/fabianmarcus/copilot)
