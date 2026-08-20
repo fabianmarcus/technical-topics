@@ -1,77 +1,23 @@
-# Persönliche Lernliste
+# Und was ist das...?
 
-Topics, Artikel und Videos zum lernen, einarbeiten und ausprobieren.
+Selbstgeschriebene Erklärungen zu technischen Themen, die mir so begegnen. *Okay, Inline Suggestions sind eingeschaltet. Ich wollte das dann aber eh so formulieren. Ich formuliere es auch oft um! Inline Suggestions sind bei Textvorhersagen übrigens recht häufig falsch, ist mir aufgefallen. Anyways...*
 
-Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)** zusammengefasst festgehalten.
+Ich schreibe die Themen auf, um sie zu verstehen, nachzuschlagen und zur Auffrischung noch einmal durchgehen zu können.
 
-## Themen
+Sie sind nicht als vollständige Dokumentation gedacht, sondern eher als persönliche Notizen zu konkreten Sachverhalten. Ohne Anspruch auf Vollständigkeit oder technische Präzision.
 
-### Künstliche Intelligenz
+Für den Anfang sind ein paar allgemeinere Themen hinzugefügt. Mit der Zeit soll es hier aber nur noch um ganz konkrete Sonderfälle und neue Technologien gehen, die recherchiert, verstanden und ausprobiert werden mussten.
 
-#### Theorie
+## Inhalt
 
-- [Design.md](https://stitch.withgoogle.com/docs/design-md/overview)
-- Spec Driven Dev mit OpenSpec
-- TDD mit Copilot
+| Bereich | Fokus |
+| --- | --- |
+| [A11y](was-ist/a11y/) | Accessibility-Grundlagen und ARIA-Hinweise. |
+| [Backend](was-ist/backend/) | Datenbanken und Backend-Frameworks. |
+| [Cloud](was-ist/cloud/) | Cloud-Konzepte sowie GCP- und Azure-Notizen. |
+| [DevOps](was-ist/dev-ops/) | CI/CD und Docker im DevOps-Kontext. |
+| [Frontend](was-ist/frontend/) | React, Angular, Bundling und Extensions. |
+| [Künstliche Intelligenz](was-ist/kuenstliche-intelligenz/) | Theorie, Praxis & Tools. |
+| [Projektmanagement](was-ist/project-management/) | Scrum, Prozesse und grundlegende Notizen. |
 
-#### Ausprobieren
-
-- ADRs - Skill und in die Instructions
-- [n8n](https://www.kapio.eu/tools/n8n)
-- Codex or Claude Code or Gemini CLI (Vibe Coding)
-- Onyx (RAG)
-- Self Hosted LLM (Ollama)
-
-### React / Next.js
-
-#### Theorie
-
-- 
-
-#### Ausprobieren
-
-- [SWR](https://swr.vercel.app/docs/mutation)
-- [Playwright Agent Testing](https://playwright.dev/docs/test-agents)
-
-### Angular
-
-#### Theorie
-
-#### Ausprobieren
-
-### Typescript
-
-- https://angularexperts.io/blog/advanced-typescript 
-(keyof, typeof, infer, mapped, etc.)
-- https://netninja.dev/p/typescript-masterclass
-- https://www.youtube.com/watch?v=6M9aZzm-kEc&list=TLPQMjcxMTIwMjPtDINszOh9aA&index=4
-- https://devblogs.microsoft.com/typescript/announcing-typescript-5-4-beta/#preserved-narrowing-in-closures-following-last-assignments
-
-### Firebase
-
-- https://blog.openreplay.com/api-gateway-patterns-and-practices
-
-#### Theorie
-
-#### Ausprobieren
-
-- Data Connect
-- Firebase MCP
-
-### Web Accessibility
-
-- Lighthouse in chrome dev tools
-- Axe / Wave
-- Webaim.org
-- Whocanuse
-
-### Themen für Was ist?
-
-#### Kuenstliche Intelligenz
-
-- Restliche Vokabeln
-- KI - Produktübersicht
-- Statelessness für MCP
-- Copilot Instructions & Skills
-- Attention (Self Attention, Cross Attention, Multi Head Attention)
-- RAC
+Falls etwas nicht stimmt, lass mir gerne ein Issue da.
