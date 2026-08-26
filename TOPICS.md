@@ -69,8 +69,6 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)
 
 #### Kuenstliche Intelligenz
 
-- Restliche Vokabeln
 - KI - Produktübersicht
-- Statelessness für MCP
 - Attention (Self Attention, Cross Attention, Multi Head Attention)
 - RAC
