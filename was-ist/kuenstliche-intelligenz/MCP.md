@@ -267,6 +267,14 @@ runGeminiToolLoop(
   .catch((err) => console.error(err));
 ```
 
+## Statelessness
+
+Bislang war der MCP-Ablauf `stateful`. Dabei hält der Server eine Session vor, in die alle notwendigen Informationen wie Kontext und Tool-Informationen gespeichert werden. Der Vorteil dabei ist, dass bei mehreren Requests nur noch die Session-ID sowie die neuen Informationen übertragen werden müssen. Den Rest holt sich der Server über die Session-ID aus der Session. Die Nachteile sind, dass der Server die Sessions speichern und verwalten muss, der Client darauf angewiesen ist, dass der Server die Session zur Verfügung hat und dass eine Session einen Client an genau einen Server bindet. Im Fall von Load Balancing oder Failover kann das zu Problemen führen.
+
+Deshalb wurde MCP in seiner Spezifikation vom 28.06.2026 auf `stateless` umgestellt.
+
+Jetzt verhält sich der MCP-Ablauf wie HTTP. Der Client überträgt alle notwendigen Informationen bei jedem Request, der Server speichert keine Sessions mehr. Somit können mehrere Requests vom selben Client ohne Probleme an verschiedene Server gehen. Load Balancing und Failover durch horizontale Skalierung sind so einfacher möglich. Fällt ein Server aus, kann der Client einfach einen anderen Server ansprechen.
+
 ## Eigene Erfahrungen
 
 Wie viele andere habe ich MCP mit Tool Calling wahrscheinlich schon tausend Mal genutzt, ohne es zu wissen; der Vorgang läuft für Nutzer ja komplett transparent ab. Als Entwickler damit gearbeitet habe ich allerdings noch nicht. Mir war aber wichtig, das Prinzip zu verstehen. Vielleicht baue ich irgendwann mal ein kleines Projekt, um Tool Calling in der Praxis zu testen.
