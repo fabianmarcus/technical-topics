@@ -72,6 +72,5 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)
 - Restliche Vokabeln
 - KI - Produktübersicht
 - Statelessness für MCP
-- Copilot Instructions & Skills
 - Attention (Self Attention, Cross Attention, Multi Head Attention)
 - RAC
