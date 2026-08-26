@@ -13,8 +13,7 @@ Für den Anfang sind ein paar allgemeinere Themen hinzugefügt. Mit der Zeit sol
 | Bereich | Fokus |
 | --- | --- |
 | [A11y](was-ist/a11y/) | Accessibility-Grundlagen und ARIA-Hinweise. |
-| [Backend](was-ist/backend/) | Datenbanken und Backend-Frameworks. |
-| [Cloud](was-ist/cloud/) | Cloud-Konzepte sowie GCP- und Azure-Notizen. |
+| [Backend](was-ist/backend/) | Cloud, Datenbanken und Backend-Frameworks. |
 | [DevOps](was-ist/dev-ops/) | CI/CD und Docker im DevOps-Kontext. |
 | [Frontend](was-ist/frontend/) | React, Angular, Bundling und Extensions. |
 | [Künstliche Intelligenz](was-ist/kuenstliche-intelligenz/) | Theorie, Praxis & Tools. |
