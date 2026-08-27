@@ -2,44 +2,32 @@
 
 Topics, Artikel und Videos zum lernen, einarbeiten und ausprobieren.
 
-Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)** zusammengefasst festgehalten.
+Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](/README.md)** zusammengefasst festgehalten.
 
 ## Themen
 
 ### Künstliche Intelligenz
 
-#### Theorie
-
+- Was ist: RAC
+- Was ist: Attention (Self Attention, Cross Attention, Multi Head Attention)
 - [Design.md](https://stitch.withgoogle.com/docs/design-md/overview)
+- Self Hosted LLM (Ollama)
 - Spec Driven Dev mit OpenSpec
 - TDD mit Copilot
-
-#### Ausprobieren
-
-- Self Hosted LLM (Ollama)
+- KI - Produktübersicht
 - Onyx (RAG)
 
 ### React / Next.js
 
-#### Theorie
-
-- https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
-
-#### Ausprobieren
-
 - [SWR](https://swr.vercel.app/docs/mutation)
+- https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
 - [Playwright Agent Testing](https://playwright.dev/docs/test-agents)
 
 ### Angular
 
-#### Theorie
-
-#### Ausprobieren
-
 ### Typescript
 
-- https://angularexperts.io/blog/advanced-typescript 
-(keyof, typeof, infer, mapped, etc.)
+- https://angularexperts.io/blog/advanced-typescript (keyof, typeof, infer, mapped, etc.)
 - https://netninja.dev/p/typescript-masterclass
 - https://www.youtube.com/watch?v=6M9aZzm-kEc&list=TLPQMjcxMTIwMjPtDINszOh9aA&index=4
 - https://devblogs.microsoft.com/typescript/announcing-typescript-5-4-beta/#preserved-narrowing-in-closures-following-last-assignments
@@ -47,11 +35,6 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)
 ### Firebase
 
 - https://blog.openreplay.com/api-gateway-patterns-and-practices
-
-#### Theorie
-
-#### Ausprobieren
-
 - Data Connect
 - Firebase MCP
 
@@ -62,10 +45,6 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)
 - Webaim.org
 - Whocanuse
 
-### Themen für Was ist?
+### DevOps / Automatisierung
 
-#### Kuenstliche Intelligenz
-
-- KI - Produktübersicht
-- Attention (Self Attention, Cross Attention, Multi Head Attention)
-- RAC
+- n8n
