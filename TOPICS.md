@@ -16,11 +16,8 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](was-ist/README.md)
 
 #### Ausprobieren
 
-- ADRs - Skill und in die Instructions
-- [n8n](https://www.kapio.eu/tools/n8n)
-- Codex or Claude Code or Gemini CLI (Vibe Coding)
-- Onyx (RAG)
 - Self Hosted LLM (Ollama)
+- Onyx (RAG)
 
 ### React / Next.js
 
