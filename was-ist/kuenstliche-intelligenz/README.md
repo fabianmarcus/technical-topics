@@ -7,13 +7,7 @@ Der Begriff Künstliche Intelligenz wird mittlerweile sehr undifferenziert verwe
 | Begriff | Erklärung |
 | --- | --- |
 | [NLP](NLP.md) | Natural Language Processing, die Transformation von natürlicher Sprache in mathematische Vektoren und umgekehrt. |
-| [LLM](LLM.md) | Large Language Model. Das Gehirn der KI, das die Daten enthält. |
-| [Trainingsdaten](LLM.md) | Strukturierte Informationen, die zum Trainieren von KI-Modellen verwendet werden. |
-| [Tokenisierung](LLM.md) | Prozess, bei dem ein Text in Token zerlegt wird, um ihn für das LLM verarbeitbar zu machen. |
-| [Token](LLM.md) | Die Informationseinheit eines LLM. |
-| [Vektor](LLM.md) | Mathematische Darstellung von Informationen (Beispiel: "Hund" = [0.1, 0.2, 0.3, 0.4]) |
-| [Embedding](LLM.md) | Vektorisierung der Informationen, um sie mathematisch vergleichen zu können. |
-| [Gewichtung](LLM.md) | Maß für die Relevanz von Informationen, die in den Trainingsdaten enthalten sind. |
+| [LLM](LLM.md) | Large Language Model, das Gehirn der KI. Der Teil, der einem wirklich verrät, wie es funktioniert. Hier geht es um [Trainingsdaten](./LLM.md#trainingsdaten), [Tokenisierung](./LLM.md#tokens-tokenisierung), [Tokens](./LLM.md#tokens-tokenisierung), [Vektoren](./LLM.md#vektorisierung), [Embeddings](./LLM.md#vektorisierung), [Gewichtungen](./LLM.md#das-llm-training), [Vorhersage (Inferenz)](./LLM.md#antwortgenerierung-durch-vorhersage-inferenz) und mehr. |
 | [Prompt](Prompt.md) | Eingabeaufforderung, die an ein KI-Modell gesendet wird, um eine Antwort zu generieren, unterteilbar in System- und User-Prompt. |
 | [RAG](RAG.md) | Retrieval Augmented Generation, eine Methode, bei der KI-Modelle auf externe Daten zugreifen, um ihre Antworten zu verbessern. |
 | [Halluzination](Halluzination.md) | Wenn ein KI-Modell eine Antwort generiert, die nicht auf den Trainingsdaten basiert und somit faktisch falsch ist. |
