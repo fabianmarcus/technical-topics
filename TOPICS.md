@@ -19,6 +19,7 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](/README.md)** zusa
 
 ### React / Next.js
 
+- Was ist: *useSyncExternalStore*
 - [SWR](https://swr.vercel.app/docs/mutation)
 - https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
 - [Playwright Agent Testing](https://playwright.dev/docs/test-agents)
@@ -34,6 +35,7 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](/README.md)** zusa
 
 ### Firebase
 
+- Video NetNinja
 - https://blog.openreplay.com/api-gateway-patterns-and-practices
 - Data Connect
 - Firebase MCP
@@ -47,4 +49,4 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](/README.md)** zusa
 
 ### DevOps / Automatisierung
 
-- n8n
+- Was ist: n8n Probe
