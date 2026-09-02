@@ -13,5 +13,6 @@ Der Begriff Künstliche Intelligenz wird mittlerweile sehr undifferenziert verwe
 | [Halluzination](Halluzination.md) | Wenn ein KI-Modell eine Antwort generiert, die nicht auf den Trainingsdaten basiert und somit faktisch falsch ist. |
 | [Agent](Agent.md) | Ein Agent ist ein System, das ein KI-Modell nutzt, um in mehreren Schritten auf ein Ziel hinzuarbeiten. |
 | [MCP](MCP.md) | Model-Context-Protocol, ein Protokoll, das die Kommunikation zwischen dem KI-Modell und Agenten steuert. |
+| [Ollama](Ollama.md) | Lokales Werkzeug, um Sprachmodelle über das Terminal zu verwalten und auszuführen. |
 | [Vokabeln](Vokabeln.md) | Sammlung von Begriffen, die im Zusammenhang mit KI relevant sind. |
 | [F&A](QA.md) | Fragen & Antworten - ein Format, bei dem ich einige Fragen an Cope hier festhalte. |
