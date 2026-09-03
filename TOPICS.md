@@ -10,12 +10,15 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](/README.md)** zusa
 
 - Was ist: RAC
 - Was ist: Attention (Self Attention, Cross Attention, Multi Head Attention)
+- Was ist: Agentic Frontier
+- Was ist: Quantisierung
 - [Design.md](https://stitch.withgoogle.com/docs/design-md/overview)
 - Self Hosted LLM (Ollama)
 - Spec Driven Dev mit OpenSpec
 - TDD mit Copilot
 - KI - Produktübersicht
 - Onyx (RAG)
+- Higgsfield
 
 ### React / Next.js
 
