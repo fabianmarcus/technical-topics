@@ -76,11 +76,14 @@ Die Liste der abgeleiteten Tokens samt ihrer numerischen ID wird in einer Datei 
 
 Die ID von `Tür`, `1234` wird nun in einen [Embedding-Vektor](./Vokabeln.md#embedding-vektor) umgewandelt. Ein [Vektor](./Vokabeln.md#embedding-vektor) ist eine mathematische Darstellung von Informationen. Ein Vektor sieht dann z.B. so aus:
 
-```text
+```ts
+// In der realen Praxis haben die Vektoren viel mehr Zahlen.
 ID 1234 = Vektor [0.1, 0.2, 0.3, 0.4]
 ```
 
-In der realen Praxis sind die Vektoren viel größer. Jede Zahl ist eine Position in diesem multidimensionalen Raum. Aus der Schule kennt man den zweidimensionalen Raum (x,y) und den dreidimensionalen Raum (x,y,z). Ein Vektor hat in unserem KI-Kontext aber eher hunderte oder tausende Dimensionen, die man sich nur schwer vorstellen kann. *(mehr weiß ich hierüber auch nicht)*
+Jede Zahl ist der Wert auf einer Achse in diesem multidimensionalen Raum. Alle Zahlen zusammen ergeben die konkrete Positions-Koordinate im Raum bzw. den Punkt im Koordinatensystem.
+
+Aus der Schule kennt man den zweidimensionalen Raum `[x,y]` und den dreidimensionalen Raum `[x,y,z]`. `x` beschreibt den Abstand von `0` auf der X-Achse, `y` den Abstand von `0` auf der Y-Achse. Zusammen ergeben sie eine bestimmte Position im zweidimensionalen Koordinatenkreuz. Ein Vektor funktioniert genauso. Nur hat im KI-Kontext das Koordinatensystem eher hunderte oder tausende Achsen (Dimensionen), die nicht bildlich vorstellbar sind. *(mehr weiß ich hierüber auch nicht)*
 
 **Der Clou an der ganzen Sache ist,** dass diese Vektoren mathematisch miteinander verglichen werden können. Je ähnlicher zwei Vektoren sind, je näher sie im Vektorraum beieinanderliegen, desto ähnlicher sind auch die Informationen, die sie repräsentieren. So kann das LLM später erkennen, dass `Tür` und `Fenster` ähnliche Konzepte sind, während `Tür` und `Hund` sehr unterschiedliche Konzepte sind.
 
