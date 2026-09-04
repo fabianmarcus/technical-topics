@@ -2,11 +2,13 @@
 
 Ollama ist ein KI-Startup, das sich auf die Bereitstellung von Sprachmodellen (LLMs und VLMs) spezialisiert hat. Dazu entwickelt und vertreibt es seine gleichnamige Software.
 
-Ollama bietet auf seiner [Internet-Plattform](https://ollama.com/search) zahlreiche Sprachmodelle an. Manche Modelle können heruntergeladen werden, andere laufen in der Cloud. Cloud-Modelle kennt man von ChatGPT, Claude oder Gemini. Für mich sind die lokal laufenden Modelle, die heruntergeladen und auf dem eigenen Rechner ausgeführt werden können, hier interessanter.
+Ollama bietet auf seiner [Internet-Plattform](https://ollama.com/search) zahlreiche Sprachmodelle an. Manche Modelle können heruntergeladen werden, andere laufen in der Cloud. Cloud-Modelle kennt man von ChatGPT, Claude oder Gemini.
 
-Dafür gibt es zudem die kostenlose [Ollama-App](https://ollama.com/download), die auf macOS und Windows läuft. Die Installation bringt ebenfalls eine CLI mit und stellt ein Web-API unter [http://localhost:11434](http://localhost:11434/) bereit.
+Für mich sind die lokal laufenden Modelle, die heruntergeladen und auf dem eigenen Rechner ausgeführt werden können, hier interessanter. Dafür gibt es zudem die kostenlose [Ollama-App](https://ollama.com/download), die auf macOS und Windows läuft. Die Installation bringt ebenfalls eine CLI mit und stellt ein Web-API unter [http://localhost:11434](http://localhost:11434/) bereit.
 
 In der App bzw. CLI können sowohl die heruntergeladenen Modelle als auch verschiedene Cloud-Modelle eingestellt werden. Cloud-Modelle erfordern in der Regel ein kostenpflichtiges Abo, während lokale Modelle kostenlos genutzt werden können, da sie auf dem eigenen Gerät laufen.
+
+Darüber hinaus ist [Ollama auch ein SDK](https://github.com/ollama/ollama-js), das in Node.js und Python genutzt werden kann. Damit können eigene Anwendungen auf Basis der Ollama-Modelle entwickelt werden. Weitere SDKs wie LlamaIndex oder LangChain können ebenfalls auf Ollama-Modelle zugreifen.
 
 ## Befehle
 
@@ -35,9 +37,9 @@ Die Größe eines Modells variiert nach Parameteranzahl. Ein glm-4.7-flash ist i
 
 ### Performance
 
-Das Chatten in der Ollama App mit einem größeren lokalen Modell funktioniert noch recht angenehm. Die Antwort braucht etwas länger als in der Cloud, ist aber immer noch akzeptabel. Das Kontextfenster lässt sich in der App von 4k bis 256k einstellen; dementsprechend fällt auch die Antwort aus.
+Das Chatten in der Ollama App mit einem größeren lokalen Modell funktioniert noch recht angenehm. Die Antwort braucht etwas länger als in der Cloud, ist aber immer noch akzeptabel. Das Kontextfenster lässt sich in der App von 4k bis 256k einstellen; dementsprechend fällt auch die Antwort aus. Nach längerer Konversation passiert aber auch hier ein stetiger Leistungsabfall, da immer mehr Kontext verarbeitet werden muss. Das schlägt lokal spürbar mehr ins Gewicht als bei einem Cloud-Modell.
 
-Stelle ich allerdings in VS Code ein lokales Modell im Copilot Chat ein, ist die Leistung fast nicht mehr zu gebrauchen. Einfachste Code-Anweisungen dauern ewig. Häufig bricht der Prozess auch fehlerbedingt ab. Das liegt wahrscheinlich daran, dass die Extension noch viele weitere Informationen in das Kontextfenster lädt, wodurch es schnell zu groß wird und die Hardware nicht mehr hinterher kommt.
+Stelle ich in VS Code ein lokales Modell im Copilot Chat ein, ist die Leistung fast nicht mehr zu gebrauchen. Einfachste Code-Anweisungen dauern ewig. Häufig bricht der Prozess auch fehlerbedingt ab. Das liegt wahrscheinlich daran, dass die Extension noch viele weitere Informationen in das Kontextfenster lädt, wodurch es schnell zu groß wird und die Hardware nicht mehr hinterher kommt.
 
 Hieran hat das lokale Modell zum Beispiel ziemlich rumgerödelt:
 
@@ -63,6 +65,12 @@ Für Chat-Anwendungen ist es aber durchaus brauchbar. Möglich ist auch, verschi
 
 Ein Bild, PDF oder eine Voice-Nachricht kann zum Beispiel zunächst von einem darauf spezialisierten Modell zu Text umgewandelt werden. Der Inhalt des Textes wird dann von einem anderen Modell analysiert. Die Analyse wird anschließend von einem weiteren Modell zu einem Ergebnistext verarbeitet.
 
+### Möglichkeiten
+
+Aus einem Haufen von der Community erstellter Modelle auswählen zu können, bietet auch die Möglichkeit, verschiedene Modelle zu vergleichen. Wie antwortet zum Beispiel ein Modell, dessen Guardrails (so gut) wie runtergefahren sind.
+
+Ich habe eins ausprobiert. Es hatte keine Hemmungen, auf Fragen zu antworten, die andere Modelle ablehnen oder mit einer beschwichtigenden Antwort inklusive Hilfsangebot beantworten würden. Das zeigt, wie wichtig ein ordentliches Training frei verfügbarer Modelle ist, da in der Zukunft wahrscheinlich immer mehr Menschen mit Chatbots über ihre Probleme sprechen werden.
+
 ## HuggingFace
 
 HuggingFace ist das GitHub der KI-Community. Hier veröffentlichen Leute ihre eigens trainierten Modelle, um sie auch anderen zur Verfügung zu stellen. Nicht nur Sprachmodelle, sondern auch multimodale Modelle für Bild- und Audioinhalte. Ollama bietet einige der dort angebotenen Sprachmodelle auch in seiner [Library](https://ollama.com/library) an, aber nicht alle.
@@ -75,7 +83,7 @@ Ein Modell auf HuggingFace kann aber genauso heruntergeladen und lokal in Ollama
 Auf Hugging Face nach einem Modell im GGUF-Format suchen, die gewünschte Datei (z. B. mein-modell.gguf) herunterladen und in einem passenden Ordner ablegen.
 
 - **Schritt B:** Ein Modelfile erstellen
-In demselben Ordner, in dem die .gguf-Datei liegt, eine neue Textdatei erstellen und sie einfach Modelfile nennen (ohne Dateiendung wie .txt). In die Datei wird folgendes eingefügt:
+In demselben Ordner, in dem die .gguf-Datei liegt, eine neue Textdatei erstellen und sie einfach *Modelfile* nennen (ohne Dateiendung wie .txt). In die Datei wird folgendes eingefügt:
 
 ```bash
 # Pfad zur heruntergeladenen GGUF-Datei
