@@ -12,6 +12,7 @@ Meine Learnings zu einigen Themen sind im Ordner **[Was ist?](/README.md)** zusa
 - Was ist: Attention (Self Attention, Cross Attention, Multi Head Attention)
 - Was ist: Agentic Frontier
 - Was ist: Quantisierung
+- Was ist: SDKs wie [Ollama](https://ollama.com/), [LlamaIndex](https://gpt-index.readthedocs.io/en/latest/index.html) oder [LangChain](https://www.langchain.com/)
 - [Design.md](https://stitch.withgoogle.com/docs/design-md/overview)
 - Self Hosted LLM (Ollama)
 - Spec Driven Dev mit OpenSpec
