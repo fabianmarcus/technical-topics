@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD033 -->
+
 # Vokabeln
 
 Technische Vokabeln, die mir beim Recherchieren zu den Themen begegnet sind und unklar waren. Ich habe sie hier gesammelt. Die Erläuterungen sind nicht immer vollständig oder präzise korrekt, aber sie helfen mir, die Begriffe zu verstehen und einzuordnen.
@@ -24,6 +26,9 @@ Technische Vokabeln, die mir beim Recherchieren zu den Themen begegnet sind und 
 
 ## Backpropagation
 
+<details>
+<summary>Backpropagation ist der Trainingsschritt, mit dem ein neuronales Netz aus Vorhersagefehlern lernt.</summary>
+
 Backpropagation ist ein wichtiger Teilprozess des Trainings eines neuronalen Netzes. Der dabei angewandte Algorithmus ist entscheidend dafür, wie gut das neuronale Netz am Ende trainiert ist. Es ist das Verfahren, das dafür sorgt, dass beispielsweise ein LLM bei der Generierung einer Antwort plausible Token-Vorhersagen trifft.
 
 Einordnung in den Trainingsprozess am Beispiel eines LLMs:
@@ -37,7 +42,12 @@ Backpropagation ist also der Trainingsschritt eines LLM bzw. neuronalen Netzes, 
 
 Bildlich gesprochen: Alle Spiele einer Fußballmannschaft werden auf Video aufgenommen. Anschließend schaut sich ein Taktik-Experte (Backpropagation) die Spiele an und analysiert, durch welche Fehler von welchen Spielern es zum gegnerischen Tor (falsche Vorhersage) kommen konnte. Der Trainer (Optimierer) überlegt sich anschließend Übungen für das nächste Training (Trainingsdurchlauf), damit die Spieler (Gewichte) diese Fehler in Zukunft vermeiden (korrigierte Repräsentation im Vektorraum).
 
+</details>
+
 ## Beam & Greedy Suche
+
+<details>
+<summary>Beam Search und Greedy Search sind deterministische Verfahren zur Auswahl des nächsten Tokens.</summary>
 
 Beam und Greedy sind zwei Suchverfahren, die bei der [Vorhersage (Inferenz)](./Vokabeln.md#inferenz-vorhersage) zur Auswahl des nächsten Tokens angewendet werden.
 
@@ -77,7 +87,12 @@ Es laufen also mehrere Vorhersage-Pfade parallel, wobei der, der am Ende die Ant
 - [Bildliche Veranschaulichung - I](https://towardsdatascience.com/wp-content/uploads/2021/04/1tEjhWqUgjX37VnT7gJN-4g-768x449.png)
 - [Bildliche Veranschaulichung - II](https://www.researchgate.net/profile/Johannes-Rieke-2/publication/374031557/figure/fig2/AS:11431281189909429@1695211392614/Beam-search-Aus-moeglichen-Token-Sequenzen-wird-die-wahrscheinlichste-Sequenz-ausgewaehlt.png)
 
+</details>
+
 ## Chunk
+
+<details>
+<summary>Ein Chunk ist ein kleiner, zusammenhängender Textabschnitt eines größeren Dokuments.</summary>
 
 Antwort von Copilot:
 
@@ -121,14 +136,24 @@ So kann das System später genau die Chunks in den Prompt holen, die semantisch 
 - Chat-Logs: zeitliche oder thematische Blöcke
 - Scans/OCR: oft kürzere Chunks wegen Fehlerrauschen
 
+</details>
+
 ## Deterministisch, nicht-deterministisch
+
+<details>
+<summary>Deterministische Prozesse liefern bei gleicher Eingabe immer dasselbe Ergebnis, nicht-deterministische Prozesse nicht.</summary>
 
 - Deterministisch bedeutet, dass ein Prozess bei gleichen Eingaben immer das gleiche Ergebnis liefert.
 - Nicht-deterministisch bedeutet, dass ein Prozess bei gleichen Eingaben unterschiedliche Ergebnisse liefern kann.
 
 Da ein LLM durch [Sampling](#sampling) explizit unterschiedliche Ergebnisse für dieselbe Eingabe ([Prompt](./Prompt.md)) liefern soll, ist es grundsätzlich nicht-deterministisch. Entfällt das [Sampling](#sampling), ist es deterministisch; mehrere Anfragen mit demselben [Prompt](./Prompt.md) würden immer die gleiche Antwort liefern.
 
+</details>
+
 ## Embedding-Vektor
+
+<details>
+<summary>Ein Embedding-Vektor ist eine numerische Repräsentation von Text in einem hochdimensionalen Raum.</summary>
 
 "Vektor", "Embedding" und "Embedding-Vektor" werden im KI-Umfeld oft synonym verwendet.
 
@@ -147,11 +172,21 @@ Wasser: [0.02, 0.10, 0.50, 0.05, 0.70, 0.01, 0.60, 0.80, 0.15, 0.45, ...]
 
 Jede Zahl in den eckigen Klammern ist eine Dimension des Vektors. Die Länge des Vektors (Anzahl der Dimensionen) hängt vom verwendeten Embedding-Modell ab. Diese Vektoren können miteinander verrechnet werden, um den Abstand zwischen ihnen bzw. die semantische Ähnlichkeit zwischen den Texten zu bestimmen.
 
+</details>
+
 ## Embedding-Matrix
+
+<details>
+<summary>Eine Embedding-Matrix ordnet jedem Token des Vokabulars einen Embedding-Vektor zu.</summary>
 
 Eine Embedding-Matrix ist die Anordnung der [Embedding-Vektoren](#embedding-vektor) in einer Tabelle - ähnlich einer Tabelle in einer relationalen Datenbank. Jeder Vektor stellt ein Token dar. Jedes Token ist eine Zeile in der Tabelle. Die Zahlenwerte des Vektors (seine Dimensionen) sind die Spalten. Der Begriff Embedding-Matrix beschreibt also einfach eine Darstellungsform der Menge aller Embedding-Vektoren. Sie repräsentiert das gesamte Vokabular eines Modells in Form einer Tabelle.
 
+</details>
+
 ## Fine-Tuning
+
+<details>
+<summary>Fine-Tuning ist das Nachtrainieren eines bereits trainierten Modells für einen speziellen Zweck.</summary>
 
 Beim Fine-Tuning (zu deutsch: *Feinabstimmung*) wird ein bereits trainiertes LLM mit zusätzlichen, meist spezifischen Daten nachtrainiert, um es auf einen bestimmten Anwendungsbereich zu optimieren, anstatt ein LLM von grundauf neu zu trainieren. Das spart Zeit, Rechenleistung und dadurch Geld. Dabei kann sowohl das Wissen erweitert, als auch das Verhalten des LLM angepasst werden. Dennoch ist Fine-Tuning wesentlich aufwendiger und teurer als RAG. Deshalb wird Fine-Tuning heutzutage eher in Anwendungsbereichen eingesetzt, die viel Wissen und/oder sehr spezifische Anforderungen haben, wie z. B. in der Medizin, im Recht oder in der Finanzbranche; für die meisten Anwendungsfälle ist RAG ausreichend. Fine-Tuning wird auch oft in Kombination mit RAG eingesetzt, um die Vorteile beider Ansätze zu nutzen. Nichtsdestotrotz wird auch der Fine-Tuning-Ansatz immer weiterentwickelt, um ihn einfacher, effizienter und kostengünstiger zu machen. Nennbare Cloud-Produkte sind: OpenAI Fine-Tuning API, Azure AI Foundry, AWS Bedrock, Google Vertex AI.
 
@@ -163,7 +198,12 @@ Ich selbst habe noch nicht gefinetuned und werde mich auch erst einmal nicht mit
 
 Der Unterschied zwischen [RAG](./RAG.md) und Fine-Tuning ist, dass beim Fine-Tuning das LLM selbst erweitert oder zumindest angepasst wird, während bei RAG zusätzliche Informationen nur temporär in den Anfrage-Kontext eingespeist werden, ohne das LLM selbst zu verändern. Das LLM "lernt" also beim Fine-Tuning, während es bei RAG für genau eine Antwort kurzfristig zusätzliche Informationen zugeschustert bekommt.
 
+</details>
+
 ## Gewicht, Gewichtung
+
+<details>
+<summary>Gewichte sind gelernte Zahlenwerte, mit denen ein neuronales Netz Eingabevektoren verrechnet.</summary>
 
 Ein Gewicht ist ein einzelner Zahlenwert (Skalar) innerhalb eines Gewichtsvektors. Auch ein Gewichtsvektor besteht, wie der Embedding-Vektor, aus sehr vielen Zahlenwerten. Im Training von LLMs sind es diese Gewichtsvektoren bzw. ihre Gewichte, die angepasst werden, um die [Vorhersage](./Vokabeln.md#inferenz-vorhersage) des Modells zu verbessern. Gewichtsvektoren sind nicht zu verwechseln mit [Embedding-Vektoren](#embedding-vektor). Embedding-Vektoren sind die konkreten Repräsentationen von Tokens im Vektorraum, die mit den Gewichtsvektoren während einer Antwort verrechnet werden, um zu bestimmen, wie wichtig eine Token-Repräsentation für die Vorhersage des nächsten Tokens ist. Gewichte haben keine textliche Repräsentation; sie sind eher numerische Richtungspfeile durch das neuronale Netz. Sie prüfen, wie sehr sich ein Embedding-Vektor (Token) für eine bestimmte Behauptung (Vorhersage) triggern lässt. Je mehr er anschlägt, desto mehr lohnt es sich, mit ihm weiterzumachen.
 
@@ -200,7 +240,12 @@ Die Metapher hinkt hier und da. Das ist aber nicht schlimm, denn sie verdeutlich
 - dass es kein definiertes Ziel gibt: das Taxi fährt nicht zu einem bestimmten Zielstern, sondern wird auf die Gravitationseigenschaften der Galaxis eingestellt und fährt so lange, bis der Taxifahrer anhält. Das Ziel eines LLMs ist die Vorhersage des nächsten Tokens, das sich aus den Gewichten und den Embedding-Vektoren ergibt - also kein vorher feststehender Endsatz. So wie die Sterne das Taxi auf der gewünschten Bahn halten, sorgen die Gewichte dafür, dass die Vorhersage des nächsten Tokens plausibel ist.
 - dass die Eingabe (Prompt) die Fahrt beeinflusst: werden dem Taxi unpassende Gravitationswerte eingestellt, fliegt es wahrscheinlich völlig verkehrt durch die Galaxis. Genauso kann ein LLM durch einen unverständlichen Prompt zu einer völlig unpassenden Vorhersage des nächsten Tokens kommen. Ein LLM, das nur auf Englisch trainiert wurde, kann z. B. keine plausiblen Vorhersagen für einen deutschen Prompt liefern.
 
+</details>
+
 ## Inferenz (Vorhersage)
+
+<details>
+<summary>Inferenz ist die laufende Berechnung des nächsten Tokens während der Antwortgenerierung.</summary>
 
 Inferenz, auch Vorhersage, ist die Berechnung des nä chsten Tokens einer Antwort auf Basis des Kontextes und der bisher vorhergesagten Tokens. Der Prozess läuft dabei in mehreren Schritten streng sequenziell ab:
 
@@ -214,7 +259,12 @@ Inferenz, auch Vorhersage, ist die Berechnung des nä chsten Tokens einer Antwor
 
 Hier etwas ausführlicher: [Funktionsweise eines LLMs](./LLM.md)
 
+</details>
+
 ## Optimizer (Trainingsprogramm)
+
+<details>
+<summary>Ein Optimizer aktualisiert im Training die Gewichte des Modells, um Vorhersagefehler zu verringern.</summary>
 
 Der Optimizer übernimmt die Gewichtsaktualisierung nach einer falschen Vorhersage. Dafür ist ihm ein bestimmter Algorithmus (in Form einer Rechenformel) hinterlegt. Es gibt verschiedene Algorithmen, die sich in Art und Weise unterscheiden, wie sie die Gewichte anpassen. Alle haben unterschiedliche Schwerpunkte mit Stärken und Schwächen. **(Mehr zu den Algorithmen weiß ich hier auch nicht.)**
 
@@ -222,7 +272,12 @@ Die Gewichtsaktualisierung erfolgt in der Regel nach der [Backpropagation](#back
 
 Unter [Backpropagation](#backpropagation) und in [LLM](./LLM.md) ist der Trainingsprozess näher beschrieben.
 
+</details>
+
 ## Prompt Template
+
+<details>
+<summary>Ein Prompt Template ist eine vorbereitete Prompt-Struktur mit Platzhaltern für konkrete Werte.</summary>
 
 Ein Prompt Template legt einen bestimmten Aufbau des Prompts sowie seinen Text bereits größtenteils fest. In dem vorfomulierten Text sind Platzhalter enthalten, die vor dem Absenden des Prompts bzw. vor Übergabe an das LLM durch konkrete Werte ersetzt werden.
 
@@ -252,7 +307,12 @@ Gib als Antwort ein JSON-Objekt zurück, das die genannten Eigenschaften und die
 
 Die Platzhalter {{Platzhalter}} werden vor dem Absenden des Prompts durch die vom Benutzer gewählten Werte programmatisch ersetzt (z.B. mit *text.replace(...)*). Der Benutzer muss den Prompt also nicht selbst formulieren, sondern kann über die Eingabefelder die Werte festlegen. Das Template sorgt dafür, dass der Prompt immer in der richtigen Form an das LLM übergeben wird.
 
+</details>
+
 ## Sampling
+
+<details>
+<summary>Sampling steuert, aus welchem Ausschnitt wahrscheinlicher Tokens das nächste Token ausgewählt wird.</summary>
 
 Sampling ist ein Teilbereich der Vorhersage (Inferenz) und wird in der Praxis bei LLMs eingesetzt, um die Kreativität bei der Vorhersage des Modells zu steuern. Sampling bedeutet konkret, durch eine bestimmte Methode (siehe folgende) einen Ausschnitt aus der Menge aller Tokens zu bestimmen. Aus diesem Ausschnitt kann anschließend das nächste Token per Zufall (Weighted Random Sampling) ausgewählt bzw. vorhergesagt werden.
 
@@ -299,11 +359,21 @@ Wann nutzt man was?
 - Mittlere Werte (0.7 - 0.9): Allgemeine E-Mails schreiben, Chatbots für den Kundenservice, Blogbeiträge verfassen.
 - Hohe Werte (1.1 - 1.4): Brainstorming für Marketing-Slogans, Gedichte schreiben, kreatives Storytelling.
 
+</details>
+
 ## Semantik, semantisch
+
+<details>
+<summary>Semantik beschreibt im KI-Kontext die inhaltliche Bedeutung und Ähnlichkeit von Informationen.</summary>
 
 Semantik ist das, worum sich das Thema der künstlichen Intelligenz hauptsächlich dreht. Bislang konnten Computer Informationen nur auf Übereinstimmung von Zeichenketten (Strings) prüfen; entweder ist die gesuchte Zeichenkette ein Teil des Textes oder nicht. Semantik bedeutet hier, dass Computer Informationen zueinander in Beziehung setzen können. Sie können sie semantisch gruppieren. Dadurch wird es möglich, Informationen auch auf Ähnlichkeit bzw. Zugehörigkeit prüfen zu können (z.B. Zimmer, Fenster, Tür), statt nur auf exakte Übereinstimmung.
 
+</details>
+
 ## Token
+
+<details>
+<summary>Ein Token ist die kleinste Texteinheit, mit der ein LLM intern arbeitet.</summary>
 
 Ein Modell versteht keine Wörter, sondern Tokens. Das Token ist die kleinste Einheit, die ein LLM versteht. Ein Token kann ein Wort, ein Teil eines Wortes oder auch nur ein einzelnes Zeichen sein. Es wird mit Tokens gearbeitet, weil sie als Vokabular wesentlich wiederverwendbarer sind und im Vektorraum effizienter abgebildet werden können als ganze Wörter. Die Menge aller zur Verfügung stehenden Tokens bildet das Vokabular des Modells.
 
@@ -337,7 +407,12 @@ Beispiel: "Der Türrahmen ist aus Holz.":
 - "."
 ```
 
+</details>
+
 ## Transformer
+
+<details>
+<summary>Ein Transformer ist die Modellarchitektur, die Token-Kontext verarbeitet und daraus Vorhersagen ableitet.</summary>
 
 Ganz grundsätzlich transformiert ein Transformer die Eingabe in eine Ausgabe.
 
@@ -359,3 +434,5 @@ Es gibt verschiedene Architekturstile, eine Eingabe zu transformieren.
 Die Decoder-only-Architektur ist der Stil, der bei GPT-Modellen verwendet wird. Viele heutige Chat-LLMs arbeiten ebenfalls decoder-only oder decoder-dominant. Exakte Architekturdetails werden je nach Anbieter aber oft nur teilweise veröffentlicht.
 
 Bei dieser Variante wird die Eingabe Schritt für Schritt verarbeitet. Das Modell sagt immer nur das nächste Token voraus, basierend auf dem bisherigen Kontext. Dadurch ist sie besonders gut für die Textgenerierung geeignet. "Decoder-only" bezeichnet also die in [LLM](./LLM.md) beschriebene autoregressive Generationsweise: nächstes Token aus vorherigem Kontext.
+
+</details>
